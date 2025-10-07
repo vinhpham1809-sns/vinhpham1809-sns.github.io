@@ -1,1 +1,75 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Câu hỏi troll vui vẻ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      background:linear-gradient(135deg,#d7e8f7,#f7f7f7);
+      color:#222;
+    }
+    .box{
+      background:rgba(255,255,255,0.75);
+      backdrop-filter:blur(8px);
+      border-radius:20px;
+      padding:40px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+      max-width:600px;
+      text-align:center;
+    }
+    h1{
+      font-size:2.2rem;
+      font-weight:800;
+      color:#3c6aa3;
+      margin-bottom:20px;
+    }
+    .options{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px;}
+    button{
+      background:#3c6aa3;
+      color:#fff;
+      border:none;
+      padding:14px 20px;
+      border-radius:12px;
+      font-size:1rem;
+      font-weight:700;
+      cursor:pointer;
+    }
+    button:hover{filter:brightness(1.1)}
+    .answer{margin-top:30px;font-size:1.4rem;font-weight:700;color:#d64263;min-height:40px;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1 id="question">Bạn thích ăn cơm hay ăn phở?</h1>
+    <div class="options">
+      <button onclick="trollAnswer('cơm')">Cơm</button>
+      <button onclick="trollAnswer('phở')">Phở</button>
+      <button onclick="trollAnswer('khác')">Khác</button>
+    </div>
+    <div id="answer" class="answer"></div>
+  </div>
 
+  <script>
+    const trollMessages = {
+      "cơm": "Chọn cơm à? Tưởng tượng ăn cơm không có phở đi, buồn chưa? 😂",
+      "phở": "Phở ngon đó, nhưng ăn phở không có cơm thì lại đói sớm thôi 🤣",
+      "khác": "Khác hả? Xong rồi cuối cùng cũng đói như thường thôi 😆"
+    };
+
+    function trollAnswer(choice){
+      const ans = document.getElementById('answer');
+      ans.textContent = trollMessages[choice] || "Ủa trả lời gì kì vậy? Thua rồi nhé 🤪";
+    }
+  </script>
+</body>
+</html>
