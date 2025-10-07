@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Công Ty Quảng Cáo SNS | Thiết Kế - Thi Công Bảng Hiệu Chuyên Nghiệp</title>
   <meta name="description" content="Công ty chuyên thiết kế & thi công bảng quảng cáo, hộp đèn, LED, chữ nổi tại Phan Thiết. Uy tín - Chuyên nghiệp - Sang trọng." />
   <meta name="keywords" content="bảng quảng cáo Phan Thiết, thiết kế bảng hiệu, thi công bảng hiệu, hộp đèn, LED, chữ nổi, quảng cáo chuyên nghiệp" />
@@ -73,51 +73,17 @@
       width: 100%;
     }
 
+    /* --- THAY ĐỔI CHO BANNER --- */
     section.hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 0 10%;
-      background: linear-gradient(135deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+      height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+      /* Các thuộc tính để hiển thị ảnh nền */
+      background-image: url('bannersns.png');
+      background-size: cover; /* Che phủ toàn bộ, không bị méo ảnh */
+      background-position: center center; /* Căn giữa ảnh */
+      background-repeat: no-repeat;
       animation: fadeUp 1.2s ease;
     }
-
-    section.hero h2 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-      animation: slideIn 1.2s ease;
-    }
-
-    section.hero p {
-      font-size: 1.2rem;
-      max-width: 800px;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
-
-    .btn-primary {
-      background: #fff;
-      color: var(--main-color);
-      padding: 14px 28px;
-      border-radius: 30px;
-      border: none;
-      font-weight: 700;
-      margin-top: 40px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background: var(--text-dark);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
+    
     section.about {
       background: #fff;
       color: var(--text-dark);
@@ -210,11 +176,7 @@
     </nav>
   </header>
 
-  <section class="hero" id="home">
-    <h2>Thiết Kế & Thi Công Bảng Hiệu Chuyên Nghiệp</h2>
-    <p>Chúng tôi mang đến giải pháp quảng cáo ấn tượng – sang trọng – bền đẹp, giúp doanh nghiệp bạn nổi bật giữa phố thị Phan Thiết.</p>
-    <button class="btn-primary" onclick="document.querySelector('#lienhe').scrollIntoView({behavior:'smooth'})">Liên hệ ngay</button>
-  </section>
+  <section class="hero" id="home"></section>
 
   <section class="about" id="gioithieu">
     <h3>Về Chúng Tôi</h3>
