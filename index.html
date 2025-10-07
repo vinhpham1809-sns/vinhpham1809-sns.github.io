@@ -13,6 +13,7 @@
   <style>
     :root {
       --main-color: #1fb3ae;
+      --dark-color: #0f615d;
       --text-dark: #0d2c2b;
       --text-light: #ffffff;
     }
@@ -23,6 +24,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--main-color);
@@ -30,18 +35,16 @@
       overflow-x: hidden;
     }
 
+    /* --- THAY ĐỔI 1: Chỉnh sửa Header (Menu) --- */
     header {
       width: 100%;
       padding: 20px 8%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: fixed;
-      top: 0;
-      background: rgba(0,0,0,0.1);
-      backdrop-filter: blur(10px);
-      z-index: 10;
-      animation: fadeDown 1s ease;
+      /* Bỏ position fixed, để menu là một phần của trang */
+      background: var(--dark-color); /* Thêm màu nền cho menu */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     header h1 {
@@ -73,14 +76,16 @@
       width: 100%;
     }
 
-    /* --- THAY ĐỔI CHO BANNER --- */
+    /* --- THAY ĐỔI 2: Chỉnh sửa Hero (Banner) --- */
     section.hero {
-      height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
-      /* Các thuộc tính để hiển thị ảnh nền */
+      height: 100vh;
       background-image: url('bannersns.png');
-      background-size: cover; /* Che phủ toàn bộ, không bị méo ảnh */
-      background-position: center center; /* Căn giữa ảnh */
+      /* 'contain' sẽ đảm bảo toàn bộ ảnh nằm trong khu vực mà không bị cắt */
+      background-size: contain; 
+      background-position: center center;
       background-repeat: no-repeat;
+      /* Thêm màu nền để lấp đầy khoảng trống nếu ảnh không vừa khít màn hình */
+      background-color: var(--main-color); 
       animation: fadeUp 1.2s ease;
     }
     
@@ -143,7 +148,7 @@
     }
 
     footer {
-      background: #0f615d;
+      background: var(--dark-color);
       color: #fff;
       text-align: center;
       padding: 40px 20px;
@@ -155,18 +160,13 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
   </style>
 </head>
 <body>
+  <!-- Banner toàn màn hình -->
+  <section class="hero" id="home"></section>
+
+  <!-- Menu được dời xuống đây -->
   <header>
     <h1>CÔNG TY TNHH TM QUẢNG CÁO SNS</h1>
     <nav>
@@ -175,8 +175,6 @@
       <a href="#lienhe">Liên hệ</a>
     </nav>
   </header>
-
-  <section class="hero" id="home"></section>
 
   <section class="about" id="gioithieu">
     <h3>Về Chúng Tôi</h3>
@@ -237,3 +235,4 @@
   </footer>
 </body>
 </html>
+
