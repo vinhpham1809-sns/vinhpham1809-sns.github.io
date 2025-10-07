@@ -2,74 +2,246 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Câu hỏi troll vui vẻ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CÔNG TY TNHH TM QUẢNG CÁO SNS</title>
+  <meta name="description" content="Công ty chuyên thiết kế & thi công bảng quảng cáo, hộp đèn, LED, chữ nổi tại Phan Thiết. Uy tín - Chuyên nghiệp - Sang trọng." />
+  <meta name="keywords" content="bảng quảng cáo Phan Thiết, thiết kế bảng hiệu, thi công bảng hiệu, hộp đèn, LED, chữ nổi, quảng cáo chuyên nghiệp" />
+  <meta name="author" content="CÔNG TY TNHH TM QUẢNG CÁO SNS" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, sans-serif;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      height:100vh;
-      background:linear-gradient(135deg,#d7e8f7,#f7f7f7);
-      color:#222;
+    :root {
+      --main-color: #1fb3ae;
+      --text-dark: #0d2c2b;
+      --text-light: #ffffff;
     }
-    .box{
-      background:rgba(255,255,255,0.75);
-      backdrop-filter:blur(8px);
-      border-radius:20px;
-      padding:40px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.12);
-      max-width:600px;
-      text-align:center;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    h1{
-      font-size:2.2rem;
-      font-weight:800;
-      color:#3c6aa3;
-      margin-bottom:20px;
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--main-color);
+      color: var(--text-light);
+      overflow-x: hidden;
     }
-    .options{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px;}
-    button{
-      background:#3c6aa3;
-      color:#fff;
-      border:none;
-      padding:14px 20px;
-      border-radius:12px;
-      font-size:1rem;
-      font-weight:700;
-      cursor:pointer;
+
+    header {
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      background: rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+      animation: fadeDown 1s ease;
     }
-    button:hover{filter:brightness(1.1)}
-    .answer{margin-top:30px;font-size:1.4rem;font-weight:700;color:#d64263;min-height:40px;}
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--text-light);
+      margin-left: 24px;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #fff;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section.hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 10%;
+      background: linear-gradient(135deg, rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+      animation: fadeUp 1.2s ease;
+    }
+
+    section.hero h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      animation: slideIn 1.2s ease;
+    }
+
+    section.hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: var(--main-color);
+      padding: 14px 28px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      margin-top: 40px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--text-dark);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    section.about {
+      background: #fff;
+      color: var(--text-dark);
+      padding: 100px 10%;
+      text-align: center;
+    }
+
+    section.about h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    section.about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    section.services {
+      background: var(--text-light);
+      color: var(--text-dark);
+      padding: 100px 10%;
+      text-align: center;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .service-item {
+      background: rgba(31,179,174,0.1);
+      border-radius: 16px;
+      padding: 30px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .service-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .service-item h4 {
+      color: var(--main-color);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #0f615d;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.95rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1 id="question">Bạn thích ăn cơm hay ăn phở?</h1>
-    <div class="options">
-      <button onclick="trollAnswer('cơm')">Cơm</button>
-      <button onclick="trollAnswer('phở')">Phở</button>
-      <button onclick="trollAnswer('khác')">Khác</button>
+  <header>
+    <h1>Quảng Cáo Phan Thiết</h1>
+    <nav>
+      <a href="#gioithieu">Giới thiệu</a>
+      <a href="#dichvu">Dịch vụ</a>
+      <a href="#lienhe">Liên hệ</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h2>Thiết Kế & Thi Công Bảng Hiệu Chuyên Nghiệp</h2>
+    <p>Chúng tôi mang đến giải pháp quảng cáo ấn tượng – sang trọng – bền đẹp, giúp doanh nghiệp bạn nổi bật giữa phố thị Phan Thiết.</p>
+    <button class="btn-primary" onclick="document.querySelector('#lienhe').scrollIntoView({behavior:'smooth'})">Liên hệ ngay</button>
+  </section>
+
+  <section class="about" id="gioithieu">
+    <h3>Về Chúng Tôi</h3>
+    <p>Công ty Quảng Cáo Phan Thiết chuyên thiết kế & thi công bảng quảng cáo, hộp đèn, chữ nổi mica - inox, LED và pano ngoài trời. Với đội ngũ giàu kinh nghiệm, chúng tôi cam kết mang lại chất lượng vượt trội, thẩm mỹ tinh tế và giá thành hợp lý cho mọi khách hàng.</p>
+  </section>
+
+  <section class="services" id="dichvu">
+    <h3>Dịch Vụ Của Chúng Tôi</h3>
+    <div class="service-list">
+      <div class="service-item">
+        <h4>Bảng Hiệu Quảng Cáo</h4>
+        <p>Thiết kế và thi công bảng hiệu chuyên nghiệp, phù hợp mọi lĩnh vực kinh doanh.</p>
+      </div>
+      <div class="service-item">
+        <h4>Chữ Nổi & LED</h4>
+        <p>Tạo điểm nhấn sang trọng với chữ nổi mica, inox, đèn LED đẹp mắt và bền bỉ.</p>
+      </div>
+      <div class="service-item">
+        <h4>Hộp Đèn & Pano</h4>
+        <p>Giải pháp truyền thông ngoài trời thu hút ánh nhìn và tăng nhận diện thương hiệu.</p>
+      </div>
+      <div class="service-item">
+        <h4>Tư Vấn & Thiết Kế</h4>
+        <p>Đội ngũ thiết kế sáng tạo, hỗ trợ tư vấn miễn phí, giúp khách hàng tối ưu chi phí quảng cáo.</p>
+      </div>
     </div>
-    <div id="answer" class="answer"></div>
-  </div>
+  </section>
 
-  <script>
-    const trollMessages = {
-      "cơm": "Chọn cơm à? Tưởng tượng ăn cơm không có phở đi, buồn chưa? 😂",
-      "phở": "Phở ngon đó, nhưng ăn phở không có cơm thì lại đói sớm thôi 🤣",
-      "khác": "Khác hả? Xong rồi cuối cùng cũng đói như thường thôi 😆"
-    };
-
-    function trollAnswer(choice){
-      const ans = document.getElementById('answer');
-      ans.textContent = trollMessages[choice] || "Ủa trả lời gì kì vậy? Thua rồi nhé 🤪";
-    }
-  </script>
+  <footer id="lienhe">
+    <p><strong>CÔNG TY QUẢNG CÁO PHAN THIẾT</strong></p>
+    <p>Địa chỉ: 123 Đường Nguyễn Tất Thành, Phan Thiết, Bình Thuận</p>
+    <p>Hotline: <a href="tel:0909123456" style="color:#fff;text-decoration:underline">0909 123 456</a> | Email: <a href="mailto:lienhe@quangcaophanthiet.vn" style="color:#fff;text-decoration:underline">lienhe@quangcaophanthiet.vn</a></p>
+    <p>&copy; 2025 Quảng Cáo Phan Thiết. Thiết kế chuẩn SEO & tối ưu trải nghiệm người dùng.</p>
+  </footer>
 </body>
 </html>
