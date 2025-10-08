@@ -1,243 +1,415 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Công Ty Quảng Cáo SNS | Thiết Kế - Thi Công Bảng Hiệu Chuyên Nghiệp</title>
-  <meta name="description" content="Công ty chuyên thiết kế & thi công bảng quảng cáo, hộp đèn, LED, chữ nổi tại Phan Thiết. Uy tín - Chuyên nghiệp - Sang trọng." />
-  <meta name="keywords" content="bảng quảng cáo Phan Thiết, thiết kế bảng hiệu, thi công bảng hiệu, hộp đèn, LED, chữ nổi, quảng cáo chuyên nghiệp" />
-  <meta name="author" content="Công ty Quảng Cáo SNS" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --main-color: #1fb3ae;
-      --dark-color: #0f615d;
-      --text-dark: #0d2c2b;
-      --text-light: #ffffff;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Công Ty Quảng Cáo SNS | Thiết Kế - Thi Công Bảng Hiệu Chuyên Nghiệp</title>
+    <meta name="description" content="Công ty chuyên thiết kế & thi công bảng quảng cáo, hộp đèn, LED, chữ nổi tại Phan Thiết. Uy tín - Chuyên nghiệp - Sang trọng." />
+    <meta name="keywords" content="bảng quảng cáo Phan Thiết, thiết kế bảng hiệu, thi công bảng hiệu, hộp đèn, LED, chữ nổi, quảng cáo chuyên nghiệp" />
+    <meta name="author" content="Công ty Quảng Cáo SNS" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --main-color: #1fb3ae;
+            --dark-color: #0f615d;
+            --text-dark: #0d2c2b;
+            --text-light: #ffffff;
+            --bg-light: #f0f5f5;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--main-color);
-      color: var(--text-light);
-      overflow-x: hidden;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
 
-    /* --- THAY ĐỔI 1: Chỉnh sửa Header (Menu) --- */
-    header {
-      width: 100%;
-      padding: 20px 8%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      /* Bỏ position fixed, để menu là một phần của trang */
-      background: var(--dark-color); /* Thêm màu nền cho menu */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            text-align: center;
+        }
 
-    header h1 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+        /* --- THANH TOP BAR --- */
+        .top-bar {
+            background-color: var(--bg-light);
+            padding: 10px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-bottom: 1px solid #e0e0e0;
+        }
 
-    nav a {
-      color: var(--text-light);
-      margin-left: 24px;
-      text-decoration: none;
-      font-weight: 600;
-      position: relative;
-    }
+        .social-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--main-color);
+        }
+        .hotline {
+            color: var(--dark-color);
+        }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: #fff;
-      transition: 0.3s;
-    }
+        /* --- MENU --- */
+        header {
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    nav a:hover::after {
-      width: 100%;
-    }
+        header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--dark-color);
+        }
 
-    /* --- THAY ĐỔI 2: Chỉnh sửa Hero (Banner) --- */
-    section.hero {
-      height: 100vh;
-      background-image: url('bannersns.png');
-      /* 'contain' sẽ đảm bảo toàn bộ ảnh nằm trong khu vực mà không bị cắt */
-      background-size: contain; 
-      background-position: center center;
-      background-repeat: no-repeat;
-      /* Thêm màu nền để lấp đầy khoảng trống nếu ảnh không vừa khít màn hình */
-      background-color: var(--main-color); 
-      animation: fadeUp 1.2s ease;
-    }
-    
-    section.about {
-      background: #fff;
-      color: var(--text-dark);
-      padding: 100px 10%;
-      text-align: center;
-    }
+        nav a {
+            color: var(--text-dark);
+            margin-left: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
 
-    section.about h3 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--main-color);
+            transition: 0.3s;
+        }
 
-    section.about p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+        nav a:hover::after {
+            width: 100%;
+        }
 
-    section.services {
-      background: var(--text-light);
-      color: var(--text-dark);
-      padding: 100px 10%;
-      text-align: center;
-    }
+        /* --- BANNER --- */
+        section.hero {
+            height: 100vh;
+            background-image: url('bannersns.png');
+            background-size: contain; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: var(--main-color); 
+        }
+        
+        /* --- CÁC SECTION CHUNG --- */
+        .content-section {
+            padding: 80px 8%;
+        }
 
-    .service-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-top: 60px;
-    }
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-    .service-item {
-      background: rgba(31,179,174,0.1);
-      border-radius: 16px;
-      padding: 30px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
+        #gioithieu {
+            background-color: #fff;
+        }
 
-    .service-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+        /* --- KHU VỰC CÓ TAB --- */
+        .tab-container {
+            margin-top: 40px;
+        }
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        .tab-btn {
+            padding: 12px 25px;
+            border: 2px solid var(--main-color);
+            background: #fff;
+            color: var(--main-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--main-color);
+            color: #fff;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeUp 0.5s;
+        }
 
-    .service-item img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
+        /* --- GRID HÌNH ẢNH --- */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .image-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .image-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
 
-    .service-item h4 {
-      color: var(--main-color);
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+        /* --- KHÁCH HÀNG (SLIDER) --- */
+        .client-section {
+            background-color: var(--bg-light);
+            overflow: hidden; /* Quan trọng để slider hoạt động đúng */
+        }
+        .client-slider {
+            margin-top: 40px;
+            display: flex;
+            width: fit-content;
+            animation: scroll 40s linear infinite;
+        }
+        .client-logo {
+            height: 80px;
+            margin: 0 40px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        .client-logo:hover {
+            filter: grayscale(0%);
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
 
-    footer {
-      background: var(--dark-color);
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.95rem;
-    }
+        /* --- FOOTER (LIÊN HỆ) --- */
+        footer {
+            background: var(--dark-color);
+            color: #fff;
+            padding: 80px 8%;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            text-align: left;
+        }
+        .footer-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .footer-info p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .footer-info a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border-radius: 16px;
+            border: 0;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+        }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-  </style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+    </style>
 </head>
 <body>
-  <!-- Banner toàn màn hình -->
-  <section class="hero" id="home"></section>
-
-  <!-- Menu được dời xuống đây -->
-  <header>
-    <h1>CÔNG TY TNHH TM QUẢNG CÁO SNS</h1>
-    <nav>
-      <a href="#gioithieu">GIỚI THIỆU</a>
-      <a href="#dichvu">DỊCH VỤ</a>
-      <a href="#lienhe">LIÊN HỆ</a>
-    </nav>
-  </header>
-
-  <section class="about" id="gioithieu">
-    <h3>Về Chúng Tôi</h3>
-    <p>Công ty TNHH TM QUẢNG CÁO SNS thành lập vào ngày 08 tháng 02 năm 2023 với sứ mệnh phục vụ khách hàng với dịch vụ tốt nhất, đưa ra những giải pháp hữu ích nhất. Mặc dù công ty SNS chúng tôi ra đời không lâu nhưng với kinh nghiệm nhiều năm trong lĩnh vực quảng cáo của ban điều hành SNS đã tự lựa chọn cho mình con đường đi lên lấy chất lượng và uy tín hàng đầu.
-Là một doanh nghiệp hoạt động trong lĩnh vực In Ấn – Quảng cáo với quy trình làm việc chuyên nghiệp, khép kín. Con người SNS luôn được trau dồi, tu dưỡng và ý thức được sứ mệnh phục vụ khách hàng của mình. “ Đẹp – Sáng tạo – Uy Tín – Tận tâm” đã là câu nói cửa miệng của mỗi con người SNS.
-Trong thời gian sắp tới, với sự phát triển ngày càng cao, SNS chúng tôi cũng sẽ không ngừng lắng nghe, nghiêm túc để phấn đấu nâng cao chất lượng phục vụ, nâng cao năng lực cạnh tranh, cải tiến và cải thiện chất lượng phục vụ theo phương châm: “Không ngừng học hỏi, sáng tạo”.
-SNS luôn trân trọng giá trị nền tảng cho sự phát triển, đó là các cơ hội được hợp tác với Quý khách hàng. Và không có bất kỳ khó khăn nào có thể ngăn cản chúng tôi mang lại những giá trị tiện ích phù hợp với mong muốn và lợi ích của Quý khách hàng. Chúng tôi tin tưởng rằng với tập thể SNS đoàn kết, vững mạnh và sự ủng hộ của Quý khách hàng, SNS chắc chắn sẽ gặt hái được nhiều thành công hơn nữa trong tương lai.
-Hân hạnh được phục vụ Quý khách hàng!</p>
-  </section>
-
-  <section class="services" id="dichvu">
-    <h3>Dịch Vụ Của Chúng Tôi</h3>
-    <div class="service-list">
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Bảng Hiệu Quảng Cáo">
-        <h4>Bảng Hiệu Quảng Cáo</h4>
-        <p>Làm bảng hiệu quảng cáo các loại: hiflex, alu chữ mica, bảng hiệu tole dán decal... tư vấn và báo giá nhanh chóng.</p>
-      </div>
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Hộp Đèn Quảng Cáo">
-        <h4>Hộp Đèn Quảng Cáo</h4>
-        <p>Thiết kế, thi công lắp đặt hộp đèn mica hút nổi, hộp đèn siêu mỏng, hộp đèn hiflex giá rẻ, bền đẹp.</p>
-      </div>
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Gia Công Chữ Nổi 3D">
-        <h4>Gia Công Chữ Nổi 3D</h4>
-        <p>Sản xuất chữ nổi inox, mica, alu, tole... với công nghệ hiện đại, sắc nét, sang trọng và bền đẹp.</p>
-      </div>
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Thi Công Mặt Dựng ALU">
-        <h4>Thi Công Mặt Dựng ALU</h4>
-        <p>Thi công mặt dựng nhôm alu, bảng hiệu alu chuyên nghiệp, thẩm mỹ cao và độ bền vượt trội.</p>
-      </div>
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Thiết Kế Showroom - Nội Thất">
-        <h4>Thiết Kế Showroom - Nội Thất</h4>
-        <p>Thiết kế và thi công showroom trưng bày sản phẩm, nội thất quảng bá thương hiệu hiện đại, ấn tượng.</p>
-      </div>
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Thi Công Gian Hàng Hội Chợ">
-        <h4>Thi Công Gian Hàng Hội Chợ</h4>
-        <p>Thiết kế, thi công gian hàng hội chợ, triển lãm theo phong cách chuyên nghiệp, thu hút khách tham quan.</p>
-      </div>
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Thi Công Pano Ngoài Trời">
-        <h4>Thi Công Pano Ngoài Trời</h4>
-        <p>Lắp đặt pano, billboard quảng cáo ngoài trời chất lượng cao, hiệu quả truyền thông vượt trội.</p>
-      </div>
-      <div class="service-item">
-        <img src="thanhvan.jpg" alt="Booth - Quầy - Tủ Kệ Trưng Bày">
-        <h4>Booth - Quầy - Tủ Kệ Trưng Bày</h4>
-        <p>Thiết kế booth trưng bày sản phẩm, quầy lễ tân, tủ kệ hiện đại, tiện dụng và nổi bật thương hiệu.</p>
-      </div>
+    <div class="top-bar">
+        <div class="social-links">
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:quangcaosns@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="hotline">
+            Hotline: <strong>0907547785</strong>
+        </div>
     </div>
-  </section>
+    
+    <section class="hero" id="home"></section>
 
-  <footer id="lienhe">
-    <p><strong>CÔNG TY TNHH TM QUẢNG CÁO SNS</strong></p>
-    <p>Văn Phòng: 12 Nguyễn Hội, Phường Phan Thiết, Tỉnh Lâm Đồng</p>
-    <p>Xưởng SX: 374 Hải Thượng Lãn Ông, Phường Bình Thuận, Tỉnh Lâm Đồng</p>
-    <p>Hotline: <a href="tel:0907547785" style="color:#fff;text-decoration:underline">0907 547 785</a> | Email: <a href="mailto:quangcaosns@gmail.com" style="color:#fff;text-decoration:underline">lienhe@snsquangcao.vn</a></p>
-    <p>&copy; 2025 Quảng Cáo SNS. Thiết kế chuẩn SEO & tối ưu trải nghiệm người dùng.</p>
-  </footer>
+    <header>
+        <h1>SNS</h1>
+        <nav>
+            <a href="#gioithieu">Giới thiệu</a>
+            <a href="#sanpham">Sản phẩm</a>
+            <a href="#khachhang">Khách hàng</a>
+            <a href="#lienhe">Liên hệ</a>
+        </nav>
+    </header>
+
+    <section class="content-section" id="gioithieu">
+        <h2>Giới Thiệu Về Chúng Tôi</h2>
+        <p>Công ty TNHH TM QUẢNG CÁO SNS thành lập vào ngày 08 tháng 02 năm 2023 với sứ mệnh phục vụ khách hàng với dịch vụ tốt nhất, đưa ra những giải pháp hữu ích nhất... (thêm text tự do ở đây)</p>
+    </section>
+
+    <section class="content-section" id="sanpham" style="background-color: var(--bg-light);">
+        <h2>Sản Phẩm Của Chúng Tôi</h2>
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab(event, 'tab1')">Tab 1</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab2')">Tab 2</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab3')">Tab 3</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab4')">Tab 4</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab5')">Tab 5</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab6')">Tab 6</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab7')">Tab 7</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab8')">Tab 8</button>
+                <button class="tab-btn" onclick="openTab(event, 'tab9')">Tab 9</button>
+            </div>
+            
+            <div id="tab1" class="tab-content active">
+                <p>Nội dung cho Tab 1...</p>
+            </div>
+            <div id="tab2" class="tab-content">
+                <p>Nội dung cho Tab 2...</p>
+            </div>
+            </div>
+    </section>
+
+    <section class="content-section" id="banghieu">
+        <h2>Bảng Hiệu - Hộp Đèn - Chữ Nổi</h2>
+        <div class="image-grid">
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Ảnh+1" alt="Ảnh minh họa 1"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Ảnh+2" alt="Ảnh minh họa 2"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Ảnh+3" alt="Ảnh minh họa 3"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Ảnh+4" alt="Ảnh minh họa 4"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Ảnh+5" alt="Ảnh minh họa 5"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Ảnh+6" alt="Ảnh minh họa 6"></div>
+        </div>
+    </section>
+
+    <section class="content-section" id="pano" style="background-color: var(--bg-light);">
+        <h2>Pano Quảng Cáo</h2>
+        <div class="image-grid">
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Pano+1" alt="Pano 1"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Pano+2" alt="Pano 2"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Pano+3" alt="Pano 3"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Pano+4" alt="Pano 4"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Pano+5" alt="Pano 5"></div>
+            <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=Pano+6" alt="Pano 6"></div>
+        </div>
+    </section>
+    
+    <section class="content-section" id="inan">
+        <h2>Thiết Kế In Ấn</h2>
+        <div class="image-grid">
+             <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=In+Ấn+1" alt="In Ấn 1"></div>
+             <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=In+Ấn+2" alt="In Ấn 2"></div>
+             <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=In+Ấn+3" alt="In Ấn 3"></div>
+             <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=In+Ấn+4" alt="In Ấn 4"></div>
+             <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=In+Ấn+5" alt="In Ấn 5"></div>
+             <div class="image-item"><img src="https://via.placeholder.com/400x300.png?text=In+Ấn+6" alt="In Ấn 6"></div>
+        </div>
+    </section>
+
+    <section class="content-section client-section" id="khachhang">
+        <h2>Khách Hàng Tiêu Biểu</h2>
+        <div class="client-slider">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+1" alt="Logo khách hàng 1">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+2" alt="Logo khách hàng 2">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+3" alt="Logo khách hàng 3">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+4" alt="Logo khách hàng 4">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+5" alt="Logo khách hàng 5">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+6" alt="Logo khách hàng 6">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+7" alt="Logo khách hàng 7">
+             <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+1" alt="Logo khách hàng 1">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+2" alt="Logo khách hàng 2">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+3" alt="Logo khách hàng 3">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+4" alt="Logo khách hàng 4">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+5" alt="Logo khách hàng 5">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+6" alt="Logo khách hàng 6">
+            <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+7" alt="Logo khách hàng 7">
+        </div>
+    </section>
+
+    <footer id="lienhe">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>CÔNG TY TNHH TM QUẢNG CÁO SNS</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Văn Phòng:</strong> 12 Nguyễn Hội, P. Phan Thiết, TP. Phan Thiết, Bình Thuận</p>
+                <p><i class="fas fa-tools"></i> <strong>Xưởng SX:</strong> 374 Hải Thượng Lãn Ông, TP. Phan Thiết, Bình Thuận</p>
+                <p><i class="fas fa-phone"></i> <strong>Hotline:</strong> <a href="tel:0907547785">0907 547 785</a></p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:quangcaosns@gmail.com">quangcaosns@gmail.com</a></p>
+            </div>
+            <div class="map-container">
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.900980077051!2d108.1001863152678!3d10.9332219921132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31768e7a6f234567%3A0x1234567890abcdef!2sPhan%20Thi%E1%BA%BFt%2C%20B%C3%ACnh%20Thu%E1%BA%ADn!5e0!3m2!1svi!2s!4v1678886400000!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Quảng Cáo SNS. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript cho hệ thống Tab
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        // Mặc định mở tab đầu tiên
+        document.querySelector('.tab-btn.active').click();
+    </script>
 </body>
 </html>
-
