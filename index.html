@@ -34,13 +34,11 @@
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             overflow-x: hidden;
-            /* --- THAY ĐỔI 1: Thêm hiệu ứng nền chuyển động --- */
             background: linear-gradient(-45deg, #e0f2f1, #b2dfdb, #80cbc4, #4db6ac);
             background-size: 400% 400%;
             animation: gradientAnimation 20s ease infinite;
         }
         
-        /* --- THAY ĐỔI 2: Thêm keyframes cho animation --- */
         @keyframes gradientAnimation {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -64,7 +62,6 @@
             font-size: 1.1rem;
         }
 
-        /* --- THANH TOP BAR --- */
         .top-bar {
             background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(5px);
@@ -90,7 +87,6 @@
             color: var(--dark-color);
         }
 
-        /* --- MENU --- */
         header {
             width: 100%;
             padding: 20px 8%;
@@ -135,20 +131,39 @@
             width: 100%;
         }
 
-        /* --- BANNER --- */
+        /* --- THAY ĐỔI 3: Cập nhật CSS cho Banner --- */
         section.hero {
             height: 100vh;
+            position: relative; /* Cần thiết cho pseudo-element */
+            overflow: hidden; /* Ẩn phần bị zoom ra ngoài */
+            background-color: transparent; 
+        }
+
+        section.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url('bannersns.png');
-            background-size: contain; 
+            background-size: cover; 
             background-position: center center;
             background-repeat: no-repeat;
-            background-color: transparent; /* Để nền body hiển thị qua */
+            animation: zoomEffect 25s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        /* --- THAY ĐỔI 4: Thêm keyframes cho hiệu ứng zoom --- */
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
-        /* --- CÁC SECTION CHUNG --- */
         .content-section {
             padding: 80px 8%;
-            background-color: #fff; /* Đặt nền trắng cho các section nội dung */
+            background-color: #fff;
         }
 
         .content-section p {
@@ -164,7 +179,6 @@
             background-color: #fff;
         }
         
-        /* --- PHẦN SẢN PHẨM --- */
         #sanpham {
             background-color: var(--bg-light);
         }
@@ -209,7 +223,6 @@
             text-align: left;
         }
         
-        /* --- KHÁCH HÀNG (SLIDER) --- */
         .client-section {
             background-color: #fff;
             overflow: hidden;
@@ -239,7 +252,6 @@
             to { transform: translateX(-100%); }
         }
 
-        /* --- FOOTER (LIÊN HỆ) --- */
         footer {
             background: var(--dark-color);
             color: #fff;
@@ -281,7 +293,6 @@
             font-size: 0.9rem;
         }
 
-        /* Reponsive Design */
         @media (max-width: 992px) {
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
