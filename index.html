@@ -164,17 +164,76 @@
             background-color: #fff;
         }
 
-        .content-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            color: #333;
-        }
-
+        /* --- CSS MỚI CHO PHẦN GIỚI THIỆU --- */
         #gioithieu {
             background-color: #fff;
+            overflow: hidden; /* Quan trọng cho animation */
+        }
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            animation: slideInFromLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .about-content {
+            text-align: left;
+            animation: slideInFromRight 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .about-content h2 {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        .about-content p {
+            text-align: left;
+            margin-bottom: 20px;
+            max-width: none;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        .principles {
+            margin-top: 30px;
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        .principles h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        .principles ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .principles li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #333;
+        }
+        .principles li i {
+            color: var(--main-color);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         
         #sanpham {
@@ -221,7 +280,6 @@
             text-align: left;
         }
         
-        /* --- THAY ĐỔI 1: CSS MỚI CHO PHẦN CÔNG TRÌNH/KHÁCH HÀNG --- */
         .client-section {
             background-color: #fff;
         }
@@ -265,7 +323,6 @@
             text-align: center;
         }
 
-        /* --- FOOTER (LIÊN HỆ) --- */
         footer {
             background: var(--dark-color);
             color: #fff;
@@ -307,8 +364,8 @@
             font-size: 0.9rem;
         }
 
-        /* Reponsive Design */
         @media (max-width: 992px) {
+            .about-container { grid-template-columns: 1fr; }
             .product-grid, .client-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
