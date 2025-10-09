@@ -323,6 +323,28 @@
             text-align: center;
         }
 
+         .gallery-section {
+            background-color: var(--bg-light);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
         footer {
             background: var(--dark-color);
             color: #fff;
@@ -362,6 +384,12 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.2);
             font-size: 0.9rem;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 992px) {
@@ -483,58 +511,6 @@
         </div>
     </section>
 
-    <section class="content-section">
-        <h2>Bảng hiệu</h2>
-        <p class="section-subtitle">Chúng tôi cung cấp đa dạng các giải pháp quảng cáo, từ thiết kế đến thi công, đáp ứng mọi nhu cầu của khách hàng.</p>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-sign"></i></div>
-                <h3>Bảng Hiệu Quảng Cáo</h3>
-                <p>Thi công các loại bảng hiệu Hiflex, Alu, Mica, Tole dán Decal... với thiết kế ấn tượng, độ bền cao.</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="far fa-lightbulb"></i></div>
-                <h3>Hộp Đèn Quảng Cáo</h3>
-                <p>Sản xuất hộp đèn siêu mỏng, hộp đèn hút nổi, hộp đèn Hiflex... giúp thương hiệu nổi bật cả ngày lẫn đêm.</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-cube"></i></div>
-                <h3>Chữ Nổi 3D</h3>
-                <p>Gia công chữ nổi chất liệu Inox, Mica, Alu, Tole... bằng công nghệ hiện đại, đảm bảo độ sắc nét và sang trọng.</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-building"></i></div>
-                <h3>Mặt Dựng Alu</h3>
-                <p>Thi công ốp mặt dựng Aluminium composite chuyên nghiệp cho tòa nhà, showroom, cửa hàng... thẩm mỹ và bền bỉ.</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-store"></i></div>
-                <h3>Thiết Kế Showroom</h3>
-                <p>Thiết kế và thi công nội thất, showroom trưng bày sản phẩm, không gian thương hiệu sáng tạo và độc đáo.</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-marker"></i></div>
-                <h3>Thiết Kế In Ấn</h3>
-                <p>Cung cấp các dịch vụ in ấn chất lượng cao: name card, catalogue, brochure, standee, backdrop...</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-ad"></i></div>
-                <h3>Pano Ngoài Trời</h3>
-                <p>Lắp đặt Pano, Billboard quảng cáo ngoài trời tấm lớn, hiệu quả truyền thông vượt trội và tiếp cận rộng rãi.</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-box-open"></i></div>
-                <h3>Gian Hàng Hội Chợ</h3>
-                <p>Thiết kế và thi công gian hàng hội chợ, triển lãm chuyên nghiệp, thu hút khách tham quan và nổi bật sản phẩm.</p>
-            </div>
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-layer-group"></i></div>
-                <h3>Quầy Kệ Trưng Bày</h3>
-                <p>Sản xuất booth, quầy lễ tân, tủ và kệ trưng bày sản phẩm theo yêu cầu, tối ưu công năng và thẩm mỹ.</p>
-            </div>
-        </div>
-    </section>
-
     <section class="content-section client-section" id="khachhang">
         <h2>Công Trình Tiêu Biểu</h2>
         <p class="section-subtitle">Khách hàng luôn là nguồn tài nguyên quý giá đối với SNS. Chúng tôi tự hào về năng lực của công ty để đáp ứng nhu cầu của khách hàng.</p>
@@ -601,6 +577,30 @@
                     <h4>Tên Công Trình 9</h4>
                     <p>Địa chỉ 9</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="content-section gallery-section">
+        <h2>Bảng Hiệu</h2>
+        <p class="section-subtitle">Dưới đây là một số mẫu bảng hiệu ấn tượng chúng tôi đã thực hiện cho khách hàng.</p>
+        <div class="gallery-grid">
+            <!-- Hàng 1 -->
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Bảng+Hiệu+1" alt="Bảng Hiệu 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Bảng+Hiệu+2" alt="Bảng Hiệu 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Bảng+Hiệu+3" alt="Bảng Hiệu 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Bảng+Hiệu+4" alt="Bảng Hiệu 4">
+            </div>
+            <!-- Hàng 2 -->
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Bảng+Hiệu+5" alt="Bảng Hiệu 5">
             </div>
         </div>
     </section>
