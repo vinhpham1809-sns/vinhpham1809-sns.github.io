@@ -131,11 +131,10 @@
             width: 100%;
         }
 
-        /* --- THAY ĐỔI 3: Cập nhật CSS cho Banner --- */
         section.hero {
             height: 77vh;
-            position: relative; /* Cần thiết cho pseudo-element */
-            overflow: hidden; /* Ẩn phần bị zoom ra ngoài */
+            position: relative;
+            overflow: hidden;
             background-color: transparent; 
         }
 
@@ -154,7 +153,6 @@
             z-index: -1;
         }
 
-        /* --- THAY ĐỔI 4: Thêm keyframes cho hiệu ứng zoom --- */
         @keyframes zoomEffect {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -223,35 +221,51 @@
             text-align: left;
         }
         
+        /* --- THAY ĐỔI 1: CSS MỚI CHO PHẦN CÔNG TRÌNH/KHÁCH HÀNG --- */
         .client-section {
             background-color: #fff;
+        }
+        .client-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .client-card {
+            background: #fff;
+            border-radius: 16px;
             overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            text-align: center;
+            transition: all 0.3s ease;
         }
-        .client-slider-wrapper {
-             margin-top: 40px;
-             display: flex;
+        .client-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
-        .client-slider {
-            display: flex;
-            width: fit-content;
-            animation: scroll 40s linear infinite;
+        .client-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
         }
-        .client-logo {
-            height: 80px;
-            margin: 0 40px;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s;
+        .client-card-info {
+            padding: 20px;
         }
-        .client-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
+        .client-card-info h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-dark);
         }
-        @keyframes scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-100%); }
+        .client-card-info p {
+            font-size: 0.9rem;
+            color: #777;
+            margin: 0;
+            text-align: center;
         }
 
+        /* --- FOOTER (LIÊN HỆ) --- */
         footer {
             background: var(--dark-color);
             color: #fff;
@@ -293,8 +307,9 @@
             font-size: 0.9rem;
         }
 
+        /* Reponsive Design */
         @media (max-width: 992px) {
-            .product-grid {
+            .product-grid, .client-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .footer-content {
@@ -303,7 +318,7 @@
         }
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; }
-            .product-grid {
+            .product-grid, .client-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -312,13 +327,13 @@
 </head>
 <body>
     <div class="top-bar">
-        <h1><div class="social-links">
+        <div class="social-links">
             <a href="https://www.facebook.com/QuangCaoSNS" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="mailto:quangcaosns@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        </div></h1>
+        </div>
         <div class="hotline">
-            <h1>Hotline: 0907 547 785</h1>
+            Hotline: <strong>0907 547 785</strong>
         </div>
     </div>
     
@@ -329,36 +344,20 @@
         <nav>
             <a href="#gioithieu">GIỚI THIỆU</a>
             <a href="#sanpham">SẢN PHẨM</a>
-            <a href="#khachhang">KHÁCH HÀNG</a>
+            <a href="#khachhang">CÔNG TRÌNH</a>
             <a href="#lienhe">LIÊN HỆ</a>
         </nav>
     </header>
 
     <section class="content-section" id="gioithieu">
         <h2>Giới Thiệu Về Chúng Tôi</h2>
-        <p>Công ty TNHH TM QUẢNG CÁO SNS thành lập vào ngày 08 tháng 02 năm 2023 với sứ mệnh phục vụ khách hàng với dịch vụ tốt nhất, đưa ra những giải pháp hữu ích nhất. Mặc dù công ty SNS chúng tôi ra đời không lâu nhưng với kinh nghiệm nhiều năm trong lĩnh vực quảng cáo của ban điều hành SNS đã tự lựa chọn cho mình con đường đi lên lấy chất lượng và uy tín hàng đầu.
-Là một doanh nghiệp hoạt động trong lĩnh vực In Ấn – Quảng cáo với quy trình làm việc chuyên nghiệp, khép kín. Con người SNS luôn được trau dồi, tu dưỡng và ý thức được sứ mệnh phục vụ khách hàng của mình. “ Đẹp – Sáng tạo – Uy Tín – Tận tâm” đã là câu nói cửa miệng của mỗi con người SNS.</p>
-<p>Trong thời gian sắp tới, với sự phát triển ngày càng cao, SNS chúng tôi cũng sẽ không ngừng lắng nghe, nghiêm túc để phấn đấu nâng cao chất lượng phục vụ, nâng cao năng lực cạnh tranh, cải tiến và cải thiện chất lượng phục vụ theo phương châm: “Không ngừng học hỏi, sáng tạo”.</p>
-<p>SNS luôn trân trọng giá trị nền tảng cho sự phát triển, đó là các cơ hội được hợp tác với Quý khách hàng. Và không có bất kỳ khó khăn nào có thể ngăn cản chúng tôi mang lại những giá trị tiện ích phù hợp với mong muốn và lợi ích của Quý khách hàng. Chúng tôi tin tưởng rằng với tập thể SNS đoàn kết, vững mạnh và sự ủng hộ của Quý khách hàng, SNS chắc chắn sẽ gặt hái được nhiều thành công hơn nữa trong tương lai.</p>
-<p>Hân hạnh được phục vụ Quý khách hàng!</p>
-        <p>Phương châm hoạt động của Công ty Quảng cáo SNS:
-        Công ty Quảng cáo SNS luôn hướng tới những công nghệ cao nhằm mục đích tư vấn cũng như chuyển giao công nghệ có chất lượng cao tới khách hàng. Chính điều này đã mang lại hiệu quả kinh tế cho khách hàng trong bối cảnh kinh tế hội nhập.</p>
-        <p>Đối với Công ty Quảng cáo SNS sự hài lòng của khách hàng là điều quan trọng nhất. Sự hài lòng này đã và đang được thể hiện rõ nét trong từng dịch vụ, sản phẩm mà Công ty cung cấp: chất lượng cao của sản phẩm, dịch vụ và điều quan trọng nhất là mang lại hiệu quả cho khách hàng.</p>
-        <p>Công ty Quảng cáo SNS đã xây dựng những nguyên tắc chuẩn trong phục vụ khách hàng như sau:</p>
-            <p> - Đáp ứng nhanh chóng và hiệu quả mọi yêu cầu của khách hàng.</p>
-            <p> - Đảm bảo sự hoạt động liên tục đối với các dịch vụ mà Công ty cung cấp.</p>
-            <p> - Nhiệt tình, chu đáo với thái độ nhanh nhẹn, hòa nhã.</p>
-            <p> - Đảm bảo cung cấp dịch vụ với giá cả hợp lý và sức cạnh tranh cao.</p>
-           <p>  - Luôn quan tâm đến chính sách đào tạo nhân viên để đảm bảo tính chuyên môn cao.</p>
-            
-        </p>
+        <p>Công ty TNHH TM QUẢNG CÁO SNS thành lập vào ngày 08 tháng 02 năm 2023 với sứ mệnh phục vụ khách hàng với dịch vụ tốt nhất, đưa ra những giải pháp hữu ích nhất...</p>
     </section>
 
     <section class="content-section" id="sanpham">
         <h2>Sản Phẩm Của Chúng Tôi</h2>
         <p class="section-subtitle">Chúng tôi cung cấp đa dạng các giải pháp quảng cáo, từ thiết kế đến thi công, đáp ứng mọi nhu cầu của khách hàng.</p>
         <div class="product-grid">
-            <!-- Hàng 1 -->
             <div class="product-card">
                 <div class="product-icon"><i class="fas fa-sign"></i></div>
                 <h3>Bảng Hiệu Quảng Cáo</h3>
@@ -374,7 +373,6 @@ Là một doanh nghiệp hoạt động trong lĩnh vực In Ấn – Quảng c�
                 <h3>Chữ Nổi 3D</h3>
                 <p>Gia công chữ nổi chất liệu Inox, Mica, Alu, Tole... bằng công nghệ hiện đại, đảm bảo độ sắc nét và sang trọng.</p>
             </div>
-            <!-- Hàng 2 -->
             <div class="product-card">
                 <div class="product-icon"><i class="fas fa-building"></i></div>
                 <h3>Mặt Dựng Alu</h3>
@@ -390,7 +388,6 @@ Là một doanh nghiệp hoạt động trong lĩnh vực In Ấn – Quảng c�
                 <h3>Thiết Kế In Ấn</h3>
                 <p>Cung cấp các dịch vụ in ấn chất lượng cao: name card, catalogue, brochure, standee, backdrop...</p>
             </div>
-            <!-- Hàng 3 -->
             <div class="product-card">
                 <div class="product-icon"><i class="fas fa-ad"></i></div>
                 <h3>Pano Ngoài Trời</h3>
@@ -409,26 +406,76 @@ Là một doanh nghiệp hoạt động trong lĩnh vực In Ấn – Quảng c�
         </div>
     </section>
 
+    <!-- THAY ĐỔI 2: SECTION KHÁCH HÀNG ĐƯỢC THIẾT KẾ LẠI -->
     <section class="content-section client-section" id="khachhang">
-        <h2>Khách Hàng Tiêu Biểu</h2>
-        <div class="client-slider-wrapper">
-            <div class="client-slider">
-                <img class="client-logo" src="https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/523356707_728175590145316_3202447495267461848_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=msNGuCosT8EQ7kNvwHmLFiE&_nc_oc=AdkTQtXhhY3Xr-_AjNAgbNoVHMTOEdUtvO_XpQ6OtFL2Xw9ztkNO4ujJ5oa-gxVSY6k&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=79p5E5SZ_ET_qTVdQIpsgQ&oh=00_AfcO2hlcxJqt1hiq7gz_kX5gYk4f2rrVPFlgH_nanutc2g&oe=68ED22BA">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+2" alt="Logo khách hàng 2">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+3" alt="Logo khách hàng 3">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+4" alt="Logo khách hàng 4">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+5" alt="Logo khách hàng 5">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+6" alt="Logo khách hàng 6">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+7" alt="Logo khách hàng 7">
+        <h2>Công Trình Tiêu Biểu</h2>
+        <p class="section-subtitle">Khách hàng luôn là nguồn tài nguyên quý giá đối với SNS. Chúng tôi tự hào về năng lực của công ty để đáp ứng nhu cầu của khách hàng.</p>
+        <div class="client-grid">
+            <!-- Hàng 1 -->
+            <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Bất+động+sản+TTP" alt="Bất động sản TTP">
+                <div class="client-card-info">
+                    <h4>Bất động sản TTP</h4>
+                    <p>Đường Lê Duẩn - TP. Phan Thiết</p>
+                </div>
             </div>
-             <div class="client-slider">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+1" alt="Logo khách hàng 1">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+2" alt="Logo khách hàng 2">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+3" alt="Logo khách hàng 3">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+4" alt="Logo khách hàng 4">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+5" alt="Logo khách hàng 5">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+6" alt="Logo khách hàng 6">
-                <img class="client-logo" src="https://via.placeholder.com/150x80.png?text=Logo+7" alt="Logo khách hàng 7">
+            <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=PVOIL+Bình+Thuận" alt="PVOIL Bình Thuận">
+                <div class="client-card-info">
+                    <h4>Logo & Chữ nổi PVOIL Bình Thuận</h4>
+                    <p>Bình Thuận</p>
+                </div>
+            </div>
+            <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Vinaphone" alt="Pano Vinaphone">
+                <div class="client-card-info">
+                    <h4>Pano Vinaphone - Hàm Thuận Bắc</h4>
+                    <p>Huyện Hàm Thuận Bắc</p>
+                </div>
+            </div>
+            <!-- Hàng 2 -->
+            <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Hưng+Phát+Mobile" alt="Hưng Phát Mobile">
+                <div class="client-card-info">
+                    <h4>Hưng Phát Mobile</h4>
+                    <p>Đường Đồng Văn Lãnh - TP. Phan Thiết</p>
+                </div>
+            </div>
+            <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Biển+vẫy+Vinaphone" alt="Biển vẫy Vinaphone">
+                <div class="client-card-info">
+                    <h4>Biển vẫy Vinaphone</h4>
+                    <p>Toàn tỉnh Bình Thuận</p>
+                </div>
+            </div>
+            <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Trường+Tiểu+Học" alt="Trường Tiểu học Mũi Né 3">
+                <div class="client-card-info">
+                    <h4>Trường Tiểu học Mũi Né 3</h4>
+                    <p>Nguyễn Công Hoan - Mũi Né</p>
+                </div>
+            </div>
+             <!-- Hàng 3 (Thêm bao nhiêu tùy ý) -->
+            <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Công+Trình+7" alt="Công trình 7">
+                <div class="client-card-info">
+                    <h4>Tên Công Trình 7</h4>
+                    <p>Địa chỉ 7</p>
+                </div>
+            </div>
+             <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Công+Trình+8" alt="Công trình 8">
+                <div class="client-card-info">
+                    <h4>Tên Công Trình 8</h4>
+                    <p>Địa chỉ 8</p>
+                </div>
+            </div>
+             <div class="client-card">
+                <img src="https://via.placeholder.com/400x300.png?text=Công+Trình+9" alt="Công trình 9">
+                <div class="client-card-info">
+                    <h4>Tên Công Trình 9</h4>
+                    <p>Địa chỉ 9</p>
+                </div>
             </div>
         </div>
     </section>
@@ -437,8 +484,8 @@ Là một doanh nghiệp hoạt động trong lĩnh vực In Ấn – Quảng c�
         <div class="footer-content">
             <div class="footer-info">
                 <h3>CÔNG TY TNHH TM QUẢNG CÁO SNS</h3>
-                <p><i class="fas fa-map-marker-alt"></i> <strong>Văn Phòng:</strong> 12 Nguyễn Hội, Phường Phan Thiết, Tỉnh Lâm Đồng</p>
-                <p><i class="fas fa-tools"></i> <strong>Xưởng SX:</strong> 374 Hải Thượng Lãn Ông, Phường Bình Thuận, Tỉnh Lâm Đồng</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Văn Phòng:</strong> 12 Nguyễn Hội, P. Phan Thiết, TP. Phan Thiết, Bình Thuận</p>
+                <p><i class="fas fa-tools"></i> <strong>Xưởng SX:</strong> 374 Hải Thượng Lãn Ông, TP. Phan Thiết, Bình Thuận</p>
                 <p><i class="fas fa-phone"></i> <strong>Điện Thoại:</strong> <a href="tel:0907547785">0907 547 785 - 0983 77 37 97</a></p>
                 <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:quangcaosns@gmail.com">quangcaosns@gmail.com</a></p>
             </div>
