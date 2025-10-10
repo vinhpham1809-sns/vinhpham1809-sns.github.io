@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Công Ty Quảng Cáo SNS</title>
+    <title>Công Ty Quảng Cáo SNS | Thiết Kế - Thi Công Bảng Hiệu Chuyên Nghiệp</title>
     <meta name="description" content="Công ty chuyên thiết kế & thi công bảng quảng cáo, hộp đèn, LED, chữ nổi tại Phan Thiết. Uy tín - Chuyên nghiệp - Sang trọng." />
     <meta name="keywords" content="bảng quảng cáo Phan Thiết, thiết kế bảng hiệu, thi công bảng hiệu, hộp đèn, LED, chữ nổi, quảng cáo chuyên nghiệp" />
     <meta name="author" content="Công ty Quảng Cáo SNS" />
@@ -45,7 +45,6 @@
             100% { background-position: 0% 50%; }
         }
 
-
         h2 {
             font-size: 2.5rem;
             font-weight: 800;
@@ -77,7 +76,7 @@
         .social-links a {
             color: var(--text-dark);
             text-decoration: none;
-            margin-right: 30px;
+            margin-right: 20px;
             transition: color 0.3s;
         }
         .social-links a:hover {
@@ -131,41 +130,34 @@
             width: 100%;
         }
 
-section.hero {
-  position: relative;
-  overflow: hidden;
-  background: #1fb3ae;
-  width: 100%;
-  margin: auto;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+        section.hero {
+            height: 77vh;
+            position: relative;
+            overflow: hidden;
+            background-color: transparent; 
+        }
 
-  padding: 0;
-}
+        section.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('bannersns.png');
+            background-size: cover; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            animation: zoomEffect 25s ease-in-out infinite;
+            z-index: -1;
+        }
 
-.hero-inner {
-  width: 90%;
-  border-radius: 14px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-inner img {
-  width: 90%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  transform: scale(1.02);
-  transform-origin: center;
-  margin: 0 auto;
-}
-
-
-
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
         .content-section {
             padding: 80px 8%;
             background-color: #fff;
@@ -181,15 +173,22 @@ section.hero {
             gap: 60px;
             align-items: center;
         }
-        .about-image img {
-            width: 100%;
-            border-radius: 24px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            animation: slideInFromLeft 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        /* --- THAY ĐỔI 1: CSS cho video responsive --- */
+        .about-image {
+             width: 100%;
+             aspect-ratio: 16 / 9; /* Giữ tỷ lệ 16:9 */
+             border-radius: 24px;
+             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+             overflow: hidden;
         }
+        .about-image iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         .about-content {
             text-align: left;
-            animation: slideInFromRight 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .about-content h2 {
             text-align: left;
@@ -231,15 +230,6 @@ section.hero {
             color: var(--main-color);
             font-size: 1.2rem;
             margin-top: 4px;
-        }
-
-        @keyframes slideInFromLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideInFromRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
         }
         
         #sanpham {
@@ -309,7 +299,7 @@ section.hero {
         }
         .client-card img {
             width: 100%;
-            height: 320px; 
+            height: 220px;
             object-fit: cover;
             display: block;
         }
@@ -329,7 +319,7 @@ section.hero {
             text-align: center;
         }
 
-         .gallery-section {
+        .gallery-section {
             background-color: var(--bg-light);
         }
         .gallery-grid {
@@ -391,7 +381,8 @@ section.hero {
             border-top: 1px solid rgba(255,255,255,0.2);
             font-size: 0.9rem;
         }
-
+        
+        /* --- THAY ĐỔI 2: Cập nhật Media Queries cho Mobile --- */
         @media (max-width: 1200px) {
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -403,14 +394,26 @@ section.hero {
             .product-grid, .client-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .gallery-grid {
+                 grid-template-columns: repeat(2, 1fr);
+            }
             .footer-content {
                 grid-template-columns: 1fr;
             }
         }
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; }
+            section.hero { height: 50vh; } /* Giảm chiều cao banner trên mobile */
+            h2 { font-size: 2rem; }
             .product-grid, .client-grid {
                 grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr); /* Giữ 2 cột cho gallery đẹp hơn */
+                gap: 15px;
+            }
+             .gallery-item img {
+                height: 180px; /* Giảm chiều cao ảnh gallery */
             }
         }
         
@@ -420,20 +423,15 @@ section.hero {
     <div class="top-bar">
         <div class="social-links">
             <a href="https://www.facebook.com/QuangCaoSNS" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-           <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-           <a href="mailto:quangcaosns@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="mailto:quangcaosns@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="hotline">
             <h3>Hotline: <strong>0907 547 785</strong></h3>
         </div>
     </div>
     
-    <section class="hero">
-  <div class="hero-inner">
-    <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
-  </div>
-</section>
-
+    <section class="hero" id="home"></section>
 
     <header>
         <h1>QUẢNG CÁO SNS XIN CHÀO!</h1>
@@ -445,12 +443,11 @@ section.hero {
         </nav>
     </header>
 
-    <!-- SECTION GIỚI THIỆU ĐÃ ĐƯỢC THIẾT KẾ LẠI -->
     <section class="content-section" id="gioithieu">
         <div class="about-container">
             <div class="about-image">
-                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fvinh.phamhoai.1%2Fvideos%2F817483523017836%2F&show_text=false&width=560&t=0" width="768" height="502" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-                <!--<img src="https://quantrinhahang.edu.vn/wp-content/uploads/2019/05/teamwork-la-gi-768x502.jpg" alt="Đội ngũ Công ty Quảng Cáo SNS"> -->
+                <!-- --- THAY ĐỔI 3: Xóa width và height cố định khỏi iframe --- -->
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fvinh.phamhoai.1%2Fvideos%2F817483523017836%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
             <div class="about-content">
                 <h2>Giới Thiệu Về Chúng Tôi</h2>
@@ -563,21 +560,19 @@ section.hero {
                     <p>Phan Thiết</p>
                 </div>
             </div>
-             <div class="client-card">
+              <div class="client-card">
                 <img src="banghieu/congtrinh_6.jpg" alt="Sân bóng Gỗ Thơm">
                 <div class="client-card-info">
                     <h4>Sân bóng Gỗ Thơm</h4>
                     <p>16 Tôn Thất Bách - Phan Thiết</p>
                 </div>
-             </div>
+              </div>
         </div>
     </section>
 
      <section class="content-section gallery-section">
         <h2>Bảng Hiệu</h2>
-        <!-- <p class="section-subtitle">Dưới đây là một số mẫu bảng hiệu ấn tượng chúng tôi đã thực hiện cho khách hàng.</p> -->
         <div class="gallery-grid">
-            <!-- Hàng 1 -->
             <div class="gallery-item">
                 <img src="banghieu/banghieu_1.jpg" alt="Bảng Hiệu 1">
             </div>
@@ -595,9 +590,7 @@ section.hero {
 
     <section class="content-section gallery-section">
         <h2>Chữ Nổi 3D</h2>
-        <!-- <p class="section-subtitle">Dưới đây là một số mẫu bảng hiệu ấn tượng chúng tôi đã thực hiện cho khách hàng.</p> -->
         <div class="gallery-grid">
-            <!-- Hàng 1 -->
             <div class="gallery-item">
                 <img src="banghieu/chunoi3d_1.jpg" alt="Chữ nổi 3D 1">
             </div>
@@ -615,54 +608,48 @@ section.hero {
 
      <section class="content-section gallery-section">
         <h2>Hộp Đèn</h2>
-        <!-- <p class="section-subtitle">Dưới đây là một số mẫu bảng hiệu ấn tượng chúng tôi đã thực hiện cho khách hàng.</p> -->
         <div class="gallery-grid">
-            <!-- Hàng 1 -->
             <div class="gallery-item">
-                <img src="banghieu/hopden_1.jpg" alt="Chữ nổi 3D 1">
+                <img src="banghieu/hopden_1.jpg" alt="Hộp Đèn 1">
             </div>
             <div class="gallery-item">
-                <img src="banghieu/hopden_2.jpg" alt="Chữ nổi 3D 2">
+                <img src="banghieu/hopden_2.jpg" alt="Hộp Đèn 2">
             </div>
             <div class="gallery-item">
-                <img src="banghieu/hopden_3.jpg" alt="Chữ nổi 3D 3">
+                <img src="banghieu/hopden_3.jpg" alt="Hộp Đèn 3">
             </div>
             <div class="gallery-item">
-                <img src="banghieu/hopden_5.jpg" alt="Chữ nổi 3D 4">
+                <img src="banghieu/hopden_5.jpg" alt="Hộp Đèn 4">
             </div>
         </div>
     </section>
 
     <section class="content-section gallery-section">
         <h2>Thiết Kế</h2>
-        <!-- <p class="section-subtitle">Dưới đây là một số mẫu bảng hiệu ấn tượng chúng tôi đã thực hiện cho khách hàng.</p> -->
         <div class="gallery-grid">
-            <!-- Hàng 1 -->
             <div class="gallery-item">
-                <img src="banghieu/thietke_1.jpg" alt="Chữ nổi 3D 1">
+                <img src="banghieu/thietke_1.jpg" alt="Thiết Kế 1">
             </div>
             <div class="gallery-item">
-                <img src="banghieu/thietke_2.jpg" alt="Chữ nổi 3D 2">
+                <img src="banghieu/thietke_2.jpg" alt="Thiết Kế 2">
             </div>
             <div class="gallery-item">
-                <img src="banghieu/thietke_3.jpg" alt="Chữ nổi 3D 3">
+                <img src="banghieu/thietke_3.jpg" alt="Thiết Kế 3">
             </div>
         </div>
     </section>
 
      <section class="content-section gallery-section">
         <h2>Pano</h2>
-        <!-- <p class="section-subtitle">Dưới đây là một số mẫu bảng hiệu ấn tượng chúng tôi đã thực hiện cho khách hàng.</p> -->
         <div class="gallery-grid">
-            <!-- Hàng 1 -->
             <div class="gallery-item">
-                <img src="banghieu/pano_1.jpg" alt="Chữ nổi 3D 1">
+                <img src="banghieu/pano_1.jpg" alt="Pano 1">
             </div>
             <div class="gallery-item">
-                <img src="banghieu/pano_2.jpg" alt="Chữ nổi 3D 2">
+                <img src="banghieu/pano_2.jpg" alt="Pano 2">
             </div>
             <div class="gallery-item">
-                <img src="banghieu/pano_3.jpg" alt="Chữ nổi 3D 3">
+                <img src="banghieu/pano_3.jpg" alt="Pano 3">
             </div>
         </div>
     </section>
