@@ -134,13 +134,13 @@
  section.hero {
   position: relative;
   overflow: hidden;
-  background-color: var(--main-color);
-  width: 100%;
-  max-width: 1300px;   
+  background-color: var(--main-color); /* #1fb3ae */
+  width: 98%;                /* cho banner rộng gần full trang */
+  max-width: 1500px;         /* tăng khung hero lớn hơn */
   margin: 30px auto;
-  border-radius: 24px;
+  border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  padding: 5px;            
+  padding: 4px;              /* viền nhỏ, sang trọng */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,7 +148,7 @@
 
 .hero-inner {
   width: 100%;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -158,12 +158,19 @@
 .hero-inner img {
   width: 100%;
   height: auto;
-  max-height: auto;         
-  object-fit: contain;        
-  border-radius: 18px;
+  border-radius: 16px;
   display: block;
   animation: zoomEffect 25s ease-in-out infinite;
+  object-fit: cover;          /* đảm bảo banner chiếm full chiều ngang */
+  transform: scale(1.05);     /* phóng to nhẹ để vừa khít khung hơn */
 }
+
+@keyframes zoomEffect {
+  0% { transform: scale(1.05); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1.05); }
+}
+
 
         .content-section {
             padding: 80px 8%;
