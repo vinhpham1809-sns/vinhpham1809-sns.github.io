@@ -141,19 +141,20 @@ section.hero {
     padding: 0; /* bỏ padding, để ảnh fit khung */
 }
 
-section.hero::before {
-    content: '';
-    position: absolute;
-    inset: 10px; /* tạo viền cách đều 10px trong khung */
-    background-image: url('bannersns.png');
-    background-size: contain;       /* hiển thị đầy đủ ảnh */
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 16px;            /* viền bo bên trong */
-    background-color: #fff;         /* màu nền trong nếu ảnh có vùng trống */
-    animation: zoomEffect 25s ease-in-out infinite;
-}
-
+ section.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('bannersns.png');
+            background-size: 85%; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            animation: zoomEffect 25s ease-in-out infinite;
+            z-index: -1;
+        }
 @keyframes zoomEffect {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
