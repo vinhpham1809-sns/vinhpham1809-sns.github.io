@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Công Ty Quảng Cáo SNS | Thiết Kế - Thi Công Bảng Hiệu Chuyên Nghiệp</title>
+    <title>Công Ty Quảng Cáo SNS</title>
     <meta name="description" content="Công ty chuyên thiết kế & thi công bảng quảng cáo, hộp đèn, LED, chữ nổi tại Phan Thiết. Uy tín - Chuyên nghiệp - Sang trọng." />
     <meta name="keywords" content="bảng quảng cáo Phan Thiết, thiết kế bảng hiệu, thi công bảng hiệu, hộp đèn, LED, chữ nổi, quảng cáo chuyên nghiệp" />
     <meta name="author" content="Công ty Quảng Cáo SNS" />
@@ -173,10 +173,9 @@
             gap: 60px;
             align-items: center;
         }
-        /* --- THAY ĐỔI 1: CSS cho video responsive --- */
         .about-image {
              width: 100%;
-             aspect-ratio: 16 / 9; /* Giữ tỷ lệ 16:9 */
+             aspect-ratio: 16 / 9;
              border-radius: 24px;
              box-shadow: 0 15px 40px rgba(0,0,0,0.15);
              overflow: hidden;
@@ -382,7 +381,55 @@
             font-size: 0.9rem;
         }
         
-        /* --- THAY ĐỔI 2: Cập nhật Media Queries cho Mobile --- */
+        /* --- THAY ĐỔI 1: CSS MỚI CHO MENU MOBILE --- */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            z-index: 1002; /* Phải cao hơn menu overlay */
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-nav.is-active {
+            transform: translateY(0);
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            margin: 1.5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-nav.is-active a {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s; /* Hiệu ứng xuất hiện trễ */
+        }
+        
+
         @media (max-width: 1200px) {
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -401,19 +448,32 @@
                 grid-template-columns: 1fr;
             }
         }
+        
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; }
-            section.hero { height: 50vh; } /* Giảm chiều cao banner trên mobile */
+            /* THAY ĐỔI 2: Cập nhật CSS cho header trên mobile */
+            header { 
+                flex-direction: row; 
+                justify-content: space-between;
+                gap: 0;
+            }
+            header nav {
+                display: none; /* Ẩn menu chính */
+            }
+            .mobile-nav-toggle {
+                display: block; /* Hiện nút hamburger */
+            }
+
+            section.hero { height: 50vh; }
             h2 { font-size: 2rem; }
             .product-grid, .client-grid {
                 grid-template-columns: 1fr;
             }
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr); /* Giữ 2 cột cho gallery đẹp hơn */
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
              .gallery-item img {
-                height: 180px; /* Giảm chiều cao ảnh gallery */
+                height: 180px;
             }
         }
         
@@ -435,18 +495,21 @@
 
     <header>
         <h1>QUẢNG CÁO SNS XIN CHÀO!</h1>
-        <nav>
+        <nav id="main-nav">
             <a href="#gioithieu">GIỚI THIỆU</a>
             <a href="#sanpham">SẢN PHẨM</a>
             <a href="#khachhang">CÔNG TRÌNH</a>
             <a href="#lienhe">LIÊN HỆ</a>
         </nav>
+        <!-- THAY ĐỔI 3: Thêm nút Hamburger -->
+        <button class="mobile-nav-toggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
 
     <section class="content-section" id="gioithieu">
         <div class="about-container">
             <div class="about-image">
-                <!-- --- THAY ĐỔI 3: Xóa width và height cố định khỏi iframe --- -->
                 <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fvinh.phamhoai.1%2Fvideos%2F817483523017836%2F&show_text=false&width=560&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
             <div class="about-content">
@@ -671,6 +734,34 @@
             <p>&copy; 2025 Quảng Cáo SNS. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- THAY ĐỔI 4: Thêm script cho menu mobile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mainNav = document.getElementById('main-nav');
+            
+            // Tạo menu mobile từ menu chính để không phải viết lại HTML
+            const mobileNav = document.createElement('nav');
+            mobileNav.classList.add('mobile-nav');
+            mobileNav.innerHTML = mainNav.innerHTML;
+            document.body.appendChild(mobileNav);
+
+            // Xử lý sự kiện click nút hamburger
+            mobileNavToggle.addEventListener('click', () => {
+                const isActive = mobileNav.classList.toggle('is-active');
+                mobileNavToggle.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+
+            // Tự động đóng menu khi người dùng click vào một link
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('is-active');
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 
