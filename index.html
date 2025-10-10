@@ -45,6 +45,7 @@
             100% { background-position: 0% 50%; }
         }
 
+
         h2 {
             font-size: 2.5rem;
             font-weight: 800;
@@ -130,32 +131,23 @@
             width: 100%;
         }
 
+        /* --- CSS MỚI CHO BANNER --- */
         section.hero {
-            height: 77vh;
             position: relative;
             overflow: hidden;
-            background-color: transparent; 
+            background: var(--main-color);
+            width: 90%;
+            margin: 40px auto;
+            border-radius: 24px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            padding: 20px;
         }
 
-        section.hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('bannersns.png');
-            background-size: cover; 
-            background-position: center center;
-            background-repeat: no-repeat;
-            animation: zoomEffect 25s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes zoomEffect {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        section.hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
         }
         
         .content-section {
@@ -381,7 +373,6 @@
             font-size: 0.9rem;
         }
         
-        /* --- THAY ĐỔI 1: CSS MỚI CHO MENU MOBILE --- */
         .mobile-nav-toggle {
             display: none;
             background: none;
@@ -389,7 +380,7 @@
             cursor: pointer;
             font-size: 1.8rem;
             color: var(--dark-color);
-            z-index: 1002; /* Phải cao hơn menu overlay */
+            z-index: 1002;
         }
         
         .mobile-nav {
@@ -426,7 +417,7 @@
         .mobile-nav.is-active a {
             opacity: 1;
             transform: translateY(0);
-            transition-delay: 0.2s; /* Hiệu ứng xuất hiện trễ */
+            transition-delay: 0.2s;
         }
         
 
@@ -450,20 +441,22 @@
         }
         
         @media (max-width: 768px) {
-            /* THAY ĐỔI 2: Cập nhật CSS cho header trên mobile */
             header { 
                 flex-direction: row; 
                 justify-content: space-between;
                 gap: 0;
             }
             header nav {
-                display: none; /* Ẩn menu chính */
+                display: none;
             }
             .mobile-nav-toggle {
-                display: block; /* Hiện nút hamburger */
+                display: block;
             }
-
-            section.hero { height: 50vh; }
+            section.hero { 
+                width: 95%;
+                margin: 10px auto;
+                padding: 10px;
+            }
             h2 { font-size: 2rem; }
             .product-grid, .client-grid {
                 grid-template-columns: 1fr;
@@ -491,7 +484,9 @@
         </div>
     </div>
     
-    <section class="hero" id="home"></section>
+    <section class="hero" id="home">
+        <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+    </section>
 
     <header>
         <h1>QUẢNG CÁO SNS XIN CHÀO!</h1>
@@ -501,7 +496,6 @@
             <a href="#khachhang">CÔNG TRÌNH</a>
             <a href="#lienhe">LIÊN HỆ</a>
         </nav>
-        <!-- THAY ĐỔI 3: Thêm nút Hamburger -->
         <button class="mobile-nav-toggle" aria-label="Menu">
             <i class="fas fa-bars"></i>
         </button>
@@ -735,25 +729,21 @@
         </div>
     </footer>
 
-    <!-- THAY ĐỔI 4: Thêm script cho menu mobile -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
             const mainNav = document.getElementById('main-nav');
             
-            // Tạo menu mobile từ menu chính để không phải viết lại HTML
             const mobileNav = document.createElement('nav');
             mobileNav.classList.add('mobile-nav');
             mobileNav.innerHTML = mainNav.innerHTML;
             document.body.appendChild(mobileNav);
 
-            // Xử lý sự kiện click nút hamburger
             mobileNavToggle.addEventListener('click', () => {
                 const isActive = mobileNav.classList.toggle('is-active');
                 mobileNavToggle.innerHTML = isActive ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
 
-            // Tự động đóng menu khi người dùng click vào một link
             mobileNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileNav.classList.remove('is-active');
@@ -764,4 +754,37 @@
     </script>
 </body>
 </html>
+" and the original query was "mọi thứ điều ổn ngoại trừ background.
+nó đã mất config ban đầu section.hero {
+  position: relative;
+  overflow: hidden;
+  background: #1fb3ae;
+  width: 100%;
+  margin: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+}
+
+.hero-inner {
+  width: 90%;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-inner img {
+  width: 90%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transform: scale(1.02);
+  transform-origin: center;
+  margin: 0 auto;
+}".
 
