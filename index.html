@@ -134,34 +134,32 @@
 section.hero {
   position: relative;
   overflow: hidden;
-  background-color: var(--main-color); /* màu nền xanh */
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 0; /* bỏ bo góc để banner tràn khung */
-  box-shadow: none;
+  background-color: var(--main-color); /* nền xanh */
+  width: 96%; /* nhỏ hơn full 100% một chút */
+  margin: 10px auto; 
+  border-radius: 18px; /* bo nhẹ như viền bạn vẽ */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0; /* không chừa khoảng trống */
+  padding: 8px; /* viền xanh mảnh */
 }
 
 .hero-inner {
   width: 100%;
-  max-width: 1920px; /* để banner to hơn, sát chữ 2 bên */
+  border-radius: 14px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .hero-inner img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  transform: scale(1.12); /* tăng kích thước ảnh để sát trên dưới, 2 bên ra thêm */
+  object-fit: contain;
+  transform: scale(1.02); /* nhẹ, không bị tràn viền */
   transform-origin: center;
 }
+
 
         .content-section {
             padding: 80px 8%;
