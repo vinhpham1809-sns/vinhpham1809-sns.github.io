@@ -131,24 +131,23 @@
             width: 100%;
         }
 
- section.hero {
+section.hero {
   position: relative;
   overflow: hidden;
-  background-color: var(--main-color); 
-  width: 98%;              
-  max-width: 1500px;        
-  margin: 30px auto;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  padding: 4px;           
+  background-color: var(--main-color); /* màu nền xanh */
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0; /* bỏ bo góc để banner tràn khung */
+  box-shadow: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0; /* không chừa khoảng trống */
 }
 
 .hero-inner {
   width: 100%;
-  border-radius: 16px;
+  max-width: 1920px; /* để banner to hơn, sát chữ 2 bên */
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -158,12 +157,12 @@
 .hero-inner img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
   display: block;
-  animation: zoomEffect 25s ease-in-out infinite;
-  object-fit: cover;        
-  transform: scale(1.05);   
+  object-fit: cover;
+  transform: scale(1.12); /* tăng kích thước ảnh để sát trên dưới, 2 bên ra thêm */
+  transform-origin: center;
 }
+
         .content-section {
             padding: 80px 8%;
             background-color: #fff;
