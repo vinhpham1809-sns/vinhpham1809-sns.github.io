@@ -130,34 +130,34 @@
         nav a:hover::after {
             width: 100%;
         }
-
+        
         section.hero {
-            height: 77vh;
-            position: relative;
-            overflow: hidden;
-            background-color: transparent; 
-        }
+    position: relative;
+    overflow: hidden;
+    background-color: var(--main-color);
+    aspect-ratio: 1206 / 352; 
+    width: 100%;
+}
 
-        section.hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('bannersns.png');
-            background-size: 85%; 
-            background-position: center center;
-            background-repeat: no-repeat;
-            animation: zoomEffect 25s ease-in-out infinite;
-            z-index: -1;
-        }
+section.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('bannersns.png');
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: zoomEffect 25s ease-in-out infinite;
+}
 
-        @keyframes zoomEffect {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+@keyframes zoomEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
         
         .content-section {
             padding: 80px 8%;
