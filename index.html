@@ -495,21 +495,7 @@
 <style>     .div-nut {         display: flex;         flex-direction: column;         font-size: 14px !important;         position: fixed;         z-index: 2147483647;         bottom: 24px;         right: 0;         padding-right: 5px;     }     .div-nut > a {         display: inline-block;         overflow: visible !important;         width: 54px !important;         height: 54px !important;         margin: 6px !important;         background-size: 100% !important;         border: 2px solid #fff !important;         border-radius: 50% !important;         margin: 8px;         text-align: center;         background-repeat: no-repeat;         background-position: center center;         background-size: auto;         cursor: pointer;         position: relative;     }     .div-nut .nut-action:hover .tooltext {         visibility: visible;         opacity: 1;     }     .div-nut:hover .nut-action {         text-decoration: none !important;         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.13);     }     .div-nut .tooltext {         visibility: hidden;         font-size: 12px !important;         line-height: 16px !important;         text-align: center;         white-space: nowrap;         border-radius: 4px;         padding: 8px;         position: absolute;         top: calc(50% - 16px);         z-index: 1;         opacity: 0;         transition: opacity 0.5s;         right: 120%;         background-image: linear-gradient(180deg, #e57373 0%, #c62828 100%);         color: #fff;     }     .div-nut .nut-goi {         background-image: url("https://thietkewebchuyen.com/data/icon/wordpress/call.svg");     }     .div-nut .nut-zalo {         background-image: url("https://thietkewebchuyen.com/data/icon/wordpress/zalo.svg");     }     .div-nut .nut-face {         background-image: url("https://thietkewebchuyen.com/data/icon/wordpress/messenger.svg");     } </style> <div class="div-nut">     <a href="tel:0907547785" class="nut-goi nut-action">         <div><span class="tooltext">Gọi ngay</span></div>     </a>     <a href="http://zalo.me/0907547785" target="_blank" class="nut-zalo nut-action">         <div><span class="tooltext">Chat với SNS qua Zalo</span></div>     </a>     <a href="https://www.facebook.com/QuangCaoSNS/" target="_blank" class="nut-face nut-action">         <div><span class="tooltext">Chat với SNS qua Messenger</span></div>     </a> </div>
     
 <body>
-    <div id="visitor-counter"></div>
 
-  <script>
-    // Đếm số lượt truy cập trên trình duyệt (LocalStorage)
-    let visits = localStorage.getItem('visitor-count');
-    if (!visits) {
-      visits = 1;
-    } else {
-      visits = parseInt(visits) + 1;
-    }
-    localStorage.setItem('visitor-count', visits);
-
-    document.getElementById('visitor-counter').textContent =
-      `Số lượt truy cập của bạn: ${visits}`;
-  </script>
     <div class="top-bar">
         <div class="social-links">
             <a href="https://www.facebook.com/QuangCaoSNS" title="Facebook"><i class="fab fa-facebook-f"></i></a>
