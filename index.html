@@ -488,7 +488,45 @@
         
     </style>
 </head>
+<button id="myBtn" title="Lên đầu trang"><img src='<?php echo get_template_directory_uri() ?>/images/len.png' title='lên đầu trang' width='14px'/></button> 
+	<style>
+		/* Mui ten lên dau trang */
+#myBtn {
+display: none; 
+position: fixed;
+bottom: 60px;
+right: 10px; 
+z-index: 99; 
+border: none;
+outline: none;
+background-color: #fff;
+border: 2px solid #ccc;
+color: white;
+cursor: pointer;
+border-radius: 30px;
+opacity: 0.7;
+}
 
+#myBtn:hover {
+background-color: #f1f1f1;
+}
+	</style>	
+<script>
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+
+if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+document.getElementById("myBtn").style.display = "block";
+} else {
+document.getElementById("myBtn").style.display = "none";
+}
+}
+
+document.getElementById('myBtn').addEventListener("click", function(){
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+});
+</script>
 <style>
     .div-nut {display: flex;flex-direction: column;font-size: 14px !important;position: fixed;z-index: 2147483647;         
                       bottom: 24px;right: 0;padding-right: 5px;}
