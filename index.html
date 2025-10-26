@@ -685,7 +685,105 @@ document.documentElement.scrollTop = 0;
 <div class="slide" data-caption="Ảnh 3: Biển cả"> <img src="https://picsum.photos/id/1016/1200/800" alt="Ảnh 3"> </div>
 <div class="slide" data-caption="Ảnh 4: Thành phố"> <img src="https://picsum.photos/id/1031/1200/800" alt="Ảnh 4"> </div>
 </div>
+<script>
+const nextBtn = document.getElementById('next');
+const dotsEl = document.getElementById('dots');
+const captionEl = document.getElementById('caption');
 
+
+let current = 0;
+const total = slides.length;
+const autoplayDelay = 3500; // ms
+let autoplayTimer = null;
+let isDragging = false;
+let startX = 0;
+let deltaX = 0;
+
+
+// create dots
+slides.forEach((_,i)=>{
+const d = document.createElement('button');
+d.className = 'dot';
+d.setAttribute('aria-label','Go to slide '+(i+1));
+d.addEventListener('click',()=>{ goTo(i); resetAutoplay(); });
+dotsEl.appendChild(d);
+});
+
+
+const dots = Array.from(dotsEl.children);
+
+
+function update(){
+const x = -current * 100;
+slidesEl.style.transform = `translateX(${x}%)`;
+dots.forEach((d,i)=> d.classList.toggle('active', i===current));
+const cap = slides[current].getAttribute('data-caption') || '';
+captionEl.textContent = cap;
+}
+
+
+function prev(){ current = (current -1 + total) % total; update(); }
+function next(){ current = (current +1) % total; update(); }
+function goTo(i){ current = ((i%total)+total)%total; update(); }
+
+
+prevBtn.addEventListener('click', ()=>{ prev(); resetAutoplay(); });
+nextBtn.addEventListener('click', ()=>{ next(); resetAutoplay(); });
+
+
+// autoplay
+function startAutoplay(){ stopAutoplay(); autoplayTimer = setInterval(()=>{ next(); }, autoplayDelay); }
+function stopAutoplay(){ if(autoplayTimer) clearInterval(autoplayTimer); autoplayTimer = null; }
+function resetAutoplay(){ stopAutoplay(); startAutoplay(); }
+
+
+// pause on hover
+slider.addEventListener('mouseenter', ()=> stopAutoplay());
+slider.addEventListener('mouseleave', ()=> startAutoplay());
+
+
+// touch / drag support
+slidesEl.addEventListener('pointerdown', (e)=>{
+isDragging = true; startX = e.clientX; slidesEl.style.transition = 'none';
+});
+window.addEventListener('pointermove', (e)=>{
+if(!isDragging) return;
+deltaX = e.clientX - startX;
+const percent = (deltaX / slider.clientWidth) * 100;
+slidesEl.style.transform = `translateX(${ -current*100 + percent }%)`;
+});
+window.addEventListener('pointerup', ()=>{
+if(!isDragging) return; isDragging=false; slidesEl.style.transition='transform 600ms cubic-bezier(.22,.9,.12,1)';
+const threshold = slider.clientWidth * 0.18;
+if(Math.abs(deltaX) > threshold){
+if(deltaX > 0) prev(); else next();
+} else { update(); }
+deltaX = 0; resetAutoplay();
+});
+
+
+// keyboard support
+window.addEventListener('keydown', (e)=>{
+if(e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
+if(e.key === 'ArrowRight') { next(); resetAutoplay(); }
+});
+
+
+// lazy load images for better perf
+slides.forEach(imgWrap => {
+const img = imgWrap.querySelector('img');
+if('loading' in HTMLImageElement.prototype) img.loading = 'lazy';
+});
+
+
+// init
+update(); startAutoplay();
+
+
+// expose a small API if needed
+window.simpleSlider = { goTo, next, prev, startAutoplay, stopAutoplay };
+})();
+</script>
 
 <button class="arrow prev" id="prev" aria-label="Previous">◀</button>
 <button class="arrow next" id="next" aria-label="Next">▶</button>
