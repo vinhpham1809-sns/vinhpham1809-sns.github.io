@@ -12,82 +12,104 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <style>
-:root{
---bg:#0f172a;
---accent:#fff;
---thumb-size:70px;
-}
-*{box-sizing:border-box}
-html,body{height:auto;width:100%;margin:0;font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg);color:var(--accent)}
+    
 
 
-.slider{
-max-width:920px;
-margin:40px auto;
-position:relative;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 8px 30px rgba(2,6,23,0.6);
-background:#111827;
-}
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      background: #000;
+    }
 
-.slides{
-display:flex;
-transition:transform 600ms cubic-bezier(.22,.9,.12,1);
-will-change:transform;
-}
+    /* Slider full chiều ngang, cao = 30% chiều ngang */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 30vw; /* chiều cao bằng 30% chiều ngang */
+      overflow: hidden;
+      background: #111;
+    }
 
+    .slides {
+      display: flex;
+      transition: transform 0.8s ease-in-out;
+      width: 100%;
+      height: 100%;
+    }
 
-.slide{
-min-width:100%;
-user-select:none;
--webkit-user-drag:none;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-height:520px;
-overflow:hidden;
-background:#000;
-}
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
+    /* Nút điều hướng trái/phải */
+    .nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
 
-.slide img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-}
+    .nav button {
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
+    .nav button:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
 
-.arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-background:rgba(0,0,0,0.35);
-border:0;
-color:var(--accent);
-width:44px;height:44px;border-radius:999px;display:inline-grid;place-items:center;
-cursor:pointer;backdrop-filter:blur(4px);
-}
-.arrow:hover{background:rgba(0,0,0,0.55)}
-.prev{left:12px}
-.next{right:12px}
+    /* Dấu chấm hiển thị slide */
+    .dots {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
 
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:8px}
-.dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,0.35);cursor:pointer}
-.dot.active{background:var(--accent)}
+    .dot.active {
+      background: white;
+      transform: scale(1.2);
+    }
 
-
-.caption{
-position:absolute;left:18px;bottom:18px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));color:#fff;font-size:15px;
-}
-
-
-
+    @media (max-width: 768px) {
+      .nav button {
+        padding: 8px 10px;
+        font-size: 18px;
+      }
+      .slider {
+        height: 40vw; /* cao hơn 1 chút cho màn nhỏ */
+      }
+    }
+  </style>
 </style>
    <style>
         :root {
@@ -677,97 +699,68 @@ document.documentElement.scrollTop = 0;
         </button>
     </header>
 	
-<div class="slider" id="slider">
-<div class="slides" id="slides">
-<div class="slide" data-caption="Ảnh 1: Cảnh đẹp"> <img src="https://picsum.photos/id/1015/1200/800" alt="Ảnh 1"> </div>
-<div class="slide" data-caption="Ảnh 2: Núi rừng"> <img src="https://picsum.photos/id/1025/1200/800" alt="Ảnh 2"> </div>
-<div class="slide" data-caption="Ảnh 3: Biển cả"> <img src="https://picsum.photos/id/1016/1200/800" alt="Ảnh 3"> </div>
-<div class="slide" data-caption="Ảnh 4: Thành phố"> <img src="https://picsum.photos/id/1031/1200/800" alt="Ảnh 4"> </div>
-</div>
+<div class="slider">
+    <div class="slides">
+      <img src="https://picsum.photos/id/1015/1920/1080" alt="Ảnh 1">
+      <img src="https://picsum.photos/id/1025/1920/1080" alt="Ảnh 2">
+      <img src="https://picsum.photos/id/1035/1920/1080" alt="Ảnh 3">
+      <img src="https://picsum.photos/id/1045/1920/1080" alt="Ảnh 4">
+    </div>
 
+    <div class="nav">
+      <button id="prev">❮</button>
+      <button id="next">❯</button>
+    </div>
 
-<button class="arrow prev" id="prev">◀</button>
-<button class="arrow next" id="next">▶</button>
+    <div class="dots" id="dots"></div>
+  </div>
 
+  <script>
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const dotsContainer = document.getElementById('dots');
+    const totalSlides = images.length;
+    let index = 0;
 
-<div class="dots" id="dots"></div>
-<div class="caption" id="caption"></div>
-</div>
+    // Tạo chấm tròn
+    images.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => moveToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
 
+    const dots = document.querySelectorAll('.dot');
 
-<script>
-(function(){
-const slider=document.getElementById('slider');
-const slidesEl=document.getElementById('slides');
-const slides=Array.from(document.querySelectorAll('.slide'));
-const prevBtn=document.getElementById('prev');
-const nextBtn=document.getElementById('next');
-const dotsEl=document.getElementById('dots');
-const captionEl=document.getElementById('caption');
+    document.getElementById('next').addEventListener('click', nextSlide);
+    document.getElementById('prev').addEventListener('click', prevSlide);
 
+    function updateDots() {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
 
+    function moveToSlide(i) {
+      index = i;
+      slides.style.transform = `translateX(${-index * 100}%)`;
+      updateDots();
+    }
 
-let current=0;
-const total=slides.length;
-const autoplayDelay=3500;
-let autoplayTimer=null;
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      moveToSlide(index);
+    }
 
+    function prevSlide() {
+      index = (index - 1 + totalSlides) % totalSlides;
+      moveToSlide(index);
+    }
 
-slides.forEach((_,i)=>{
-const d=document.createElement('button');
-d.className='dot';
-d.addEventListener('click',()=>{goTo(i);resetAutoplay();});
-dotsEl.appendChild(d);
-});
+    // Tự động chạy
+    setInterval(nextSlide, 5000);
+  </script>
 
-
-const dots=Array.from(dotsEl.children);
-
-
-slides.forEach((s,i)=>{
-const t=document.createElement('div');
-t.className='thumbnail';
-t.innerHTML=`<img src="${s.querySelector('img').src}" alt="thumb${i+1}">`;
-t.addEventListener('click',()=>{goTo(i);resetAutoplay();});
-thumbsEl.appendChild(t);
-});
-
-
-const thumbs=Array.from(thumbsEl.children);
-
-
-function update(){
-slidesEl.style.transform=`translateX(${-current*100}%)`;
-dots.forEach((d,i)=>d.classList.toggle('active',i===current));
-thumbs.forEach((t,i)=>t.classList.toggle('active',i===current));
-captionEl.textContent=slides[current].getAttribute('data-caption')||'';
-}
-
-
-function prev(){current=(current-1+total)%total;update();}
-function next(){current=(current+1)%total;update();}
-function goTo(i){current=((i%total)+total)%total;update();}
-
-
-prevBtn.onclick=()=>{prev();resetAutoplay();};
-nextBtn.onclick=()=>{next();resetAutoplay();};
-
-
-function startAutoplay(){stopAutoplay();autoplayTimer=setInterval(next,autoplayDelay);}
-function stopAutoplay(){if(autoplayTimer)clearInterval(autoplayTimer);autoplayTimer=null;}
-function resetAutoplay(){stopAutoplay();startAutoplay();}
-
-
-slider.onmouseenter=()=>stopAutoplay();
-slider.onmouseleave=()=>startAutoplay();
-
-
-window.onkeydown=(e)=>{if(e.key==='ArrowLeft'){prev();resetAutoplay();}if(e.key==='ArrowRight'){next();resetAutoplay();}};
-
-
-update();startAutoplay();
-})();
-</script>
     <section class="content-section" id="gioithieu">
 
 		<div class="about-container">
