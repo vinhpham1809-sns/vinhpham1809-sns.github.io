@@ -19,7 +19,7 @@
 --thumb-size:70px;
 }
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg);color:var(--accent)}
+html,body{height:auto;width:100%;margin:0;font-family:Inter, system-ui, Arial, sans-serif;background:var(--bg);color:var(--accent)}
 
 
 .slider{
@@ -87,14 +87,7 @@ position:absolute;left:18px;bottom:18px;padding:10px 14px;border-radius:10px;bac
 }
 
 
-.thumbnails{
-display:flex;
-justify-content:center;
-gap:8px;
-margin-top:10px;
-flex-wrap:wrap;
-}
-.thumbnail{
+
 </style>
    <style>
         :root {
@@ -702,9 +695,6 @@ document.documentElement.scrollTop = 0;
 </div>
 
 
-<div class="thumbnails" id="thumbnails"></div>
-
-
 <script>
 (function(){
 const slider=document.getElementById('slider');
@@ -714,7 +704,7 @@ const prevBtn=document.getElementById('prev');
 const nextBtn=document.getElementById('next');
 const dotsEl=document.getElementById('dots');
 const captionEl=document.getElementById('caption');
-const thumbsEl=document.getElementById('thumbnails');
+
 
 
 let current=0;
