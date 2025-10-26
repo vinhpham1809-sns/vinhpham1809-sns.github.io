@@ -504,65 +504,7 @@
                 height: 180px;
             }
         }
-	/* Slide chuyển ảnh*/
-  .slider-container{
-  height: 100%;
-  width: 100%;
-  position: relative;
-  overflow: hidden; 
-  text-align: center;
-}
-
-.menu {
-  position: absolute;
-  left: 0;
-  z-index: 900;
-  width: 100%;
-  bottom: 0;
-}
-
-.menu label {
-  cursor: pointer;
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: #fff;
-  border-radius: 50px;
-  margin: 0 .2em 1em;
-  transition: all .3s ease;
-  &:hover {
-    background: red;
-  }
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  z-index: 10;
-  padding: 8em 1em 0;
-  background-size: cover;
-  background-position: 50% 50%;
-  transition: left 0s .75s;
-}
-
-[id^="slide"]:checked + .slide {
-  left: 0;
-  z-index: 100;
-  transition: left .65s ease-out;
-}
-
-.slide-1 {
-  background-image: url("https://quangcaosns.com.vn/bannersns.png");
-}
-.slide-2 {
-  <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">;
-}
-.slide-3 {
-  <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">;
-}
+	
     </style>
 </head>
 <button id="myBtn" title="Lên đầu trang"><img src="banghieu/len.png" title='Lên đầu trang' width='50px' hight='50px'/></button>
@@ -663,21 +605,7 @@ document.documentElement.scrollTop = 0;
 	
 
     <section class="content-section" id="gioithieu">
-		<div class="slider-container">
-  			<div class="menu">
-    			<label for="slide-dot-1"></label>
-    			<label for="slide-dot-2"></label>
-    			<label for="slide-dot-3"></label>
-  			</div>	
-  
-  			<input id="slide-dot-1" type="radio" name="slides" checked>
-    		<div class="slide slide-1"></div>
-   			<input id="slide-dot-2" type="radio" name="slides">
-  			<div class="slide slide-2"></div>
-    		<input id="slide-dot-3" type="radio" name="slides">
-    		<div class="slide slide-3"></div>
-		</div>
-        <div class="about-container">
+		<div class="about-container">
 			
 			<div class="about-image">
                 <iframe src="https://www.youtube.com/embed/4NyrSiZkkdg?si=w4YceImxinWxxCeN&amp;controls=0&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
