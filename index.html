@@ -22,38 +22,10 @@
             --bg-light: #f0f5f5;
 			--bg:#0f172a;
 			--accent:#fff; 
+			--thumb-size:70px;
         }
 
 *{box-sizing:border-box}
-.slider{
-max-width:920px;
-margin:40px auto;
-position:relative;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 8px 30px rgba(2,6,23,0.6);
-background:#111827;
-}
-
-
-.slides{
-display:flex;
-transition:transform 600ms cubic-bezier(.22,.9,.12,1);
-will-change:transform;
-}
-
-
-.slide{
-min-width:100%;
-user-select:none;
--webkit-user-drag:none;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-height:520px;
-overflow:hidden;
-background:#000;
 }
 
 
@@ -62,11 +34,9 @@ width:100%;
 height:100%;
 object-fit:cover;
 display:block;
-transform:scale(1.02);
 }
 
 
-/* arrows */
 .arrow{
 position:absolute;
 top:50%;
@@ -82,22 +52,47 @@ cursor:pointer;backdrop-filter:blur(4px);
 .next{right:12px}
 
 
-/* dots */
 .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:8px}
 .dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,0.35);cursor:pointer}
 .dot.active{background:var(--accent)}
 
 
-/* caption */
 .caption{
 position:absolute;left:18px;bottom:18px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));color:#fff;font-size:15px;
 }
 
 
-/* responsive */
+.thumbnails{
+display:flex;
+justify-content:center;
+gap:8px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+.thumbnail{
+width:var(--thumb-size);
+height:var(--thumb-size);
+border-radius:6px;
+overflow:hidden;
+border:2px solid transparent;
+cursor:pointer;
+opacity:0.6;
+transition:all .3s;
+}
+.thumbnail img{
+width:100%;height:100%;object-fit:cover;display:block;
+}
+.thumbnail.active{
+border-color:var(--accent);
+opacity:1;
+transform:scale(1.05);
+}
+
+
 @media (max-width:640px){
 .slide{height:320px}
 .slider{margin:18px}
+:root{--thumb-size:55px}
 }
 /* kết thúc slide */	   
 		* {
@@ -649,8 +644,6 @@ document.documentElement.scrollTop = 0;
 		
 <body>
 
-	
-	
     <div class="top-bar">
         <h3><div class="social-links">
             <a href="https://www.facebook.com/QuangCaoSNS" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -679,121 +672,102 @@ document.documentElement.scrollTop = 0;
         </button>
     </header>
 	
-<script>
-const nextBtn = document.getElementById('next');
-const dotsEl = document.getElementById('dots');
-const captionEl = document.getElementById('caption');
-
-
-let current = 0;
-const total = slides.length;
-const autoplayDelay = 3500; // ms
-let autoplayTimer = null;
-let isDragging = false;
-let startX = 0;
-let deltaX = 0;
-
-
-// create dots
-slides.forEach((_,i)=>{
-const d = document.createElement('button');
-d.className = 'dot';
-d.setAttribute('aria-label','Go to slide '+(i+1));
-d.addEventListener('click',()=>{ goTo(i); resetAutoplay(); });
-dotsEl.appendChild(d);
-});
-
-
-const dots = Array.from(dotsEl.children);
-
-
-function update(){
-const x = -current * 100;
-slidesEl.style.transform = `translateX(${x}%)`;
-dots.forEach((d,i)=> d.classList.toggle('active', i===current));
-const cap = slides[current].getAttribute('data-caption') || '';
-captionEl.textContent = cap;
-}
-
-
-function prev(){ current = (current -1 + total) % total; update(); }
-function next(){ current = (current +1) % total; update(); }
-function goTo(i){ current = ((i%total)+total)%total; update(); }
-
-
-prevBtn.addEventListener('click', ()=>{ prev(); resetAutoplay(); });
-nextBtn.addEventListener('click', ()=>{ next(); resetAutoplay(); });
-
-
-// autoplay
-function startAutoplay(){ stopAutoplay(); autoplayTimer = setInterval(()=>{ next(); }, autoplayDelay); }
-function stopAutoplay(){ if(autoplayTimer) clearInterval(autoplayTimer); autoplayTimer = null; }
-function resetAutoplay(){ stopAutoplay(); startAutoplay(); }
-
-
-// pause on hover
-slider.addEventListener('mouseenter', ()=> stopAutoplay());
-slider.addEventListener('mouseleave', ()=> startAutoplay());
-
-
-// touch / drag support
-slidesEl.addEventListener('pointerdown', (e)=>{
-isDragging = true; startX = e.clientX; slidesEl.style.transition = 'none';
-});
-window.addEventListener('pointermove', (e)=>{
-if(!isDragging) return;
-deltaX = e.clientX - startX;
-const percent = (deltaX / slider.clientWidth) * 100;
-slidesEl.style.transform = `translateX(${ -current*100 + percent }%)`;
-});
-window.addEventListener('pointerup', ()=>{
-if(!isDragging) return; isDragging=false; slidesEl.style.transition='transform 600ms cubic-bezier(.22,.9,.12,1)';
-const threshold = slider.clientWidth * 0.18;
-if(Math.abs(deltaX) > threshold){
-if(deltaX > 0) prev(); else next();
-} else { update(); }
-deltaX = 0; resetAutoplay();
-});
-
-
-// keyboard support
-window.addEventListener('keydown', (e)=>{
-if(e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
-if(e.key === 'ArrowRight') { next(); resetAutoplay(); }
-});
-
-
-// lazy load images for better perf
-slides.forEach(imgWrap => {
-const img = imgWrap.querySelector('img');
-if('loading' in HTMLImageElement.prototype) img.loading = 'lazy';
-});
-
-
-// init
-update(); startAutoplay();
-
-
-// expose a small API if needed
-window.simpleSlider = { goTo, next, prev, startAutoplay, stopAutoplay };
-})();
-</script>
-	
-	
-    <section class="content-section" id="gioithieu">
-		<div class="slider" id="slider">
+<div class="slider" id="slider">
 <div class="slides" id="slides">
-<!-- Thay src bằng đường dẫn ảnh của bạn -->
 <div class="slide" data-caption="Ảnh 1: Cảnh đẹp"> <img src="https://picsum.photos/id/1015/1200/800" alt="Ảnh 1"> </div>
 <div class="slide" data-caption="Ảnh 2: Núi rừng"> <img src="https://picsum.photos/id/1025/1200/800" alt="Ảnh 2"> </div>
 <div class="slide" data-caption="Ảnh 3: Biển cả"> <img src="https://picsum.photos/id/1016/1200/800" alt="Ảnh 3"> </div>
 <div class="slide" data-caption="Ảnh 4: Thành phố"> <img src="https://picsum.photos/id/1031/1200/800" alt="Ảnh 4"> </div>
 </div>
-<button class="arrow prev" id="prev" aria-label="Previous">◀</button>
-<button class="arrow next" id="next" aria-label="Next">▶</button>
+
+
+<button class="arrow prev" id="prev">◀</button>
+<button class="arrow next" id="next">▶</button>
+
+
 <div class="dots" id="dots"></div>
-<div class="caption" id="caption"> </div>
+<div class="caption" id="caption"></div>
 </div>
+
+
+<div class="thumbnails" id="thumbnails"></div>
+
+
+<script>
+(function(){
+const slider=document.getElementById('slider');
+const slidesEl=document.getElementById('slides');
+const slides=Array.from(document.querySelectorAll('.slide'));
+const prevBtn=document.getElementById('prev');
+const nextBtn=document.getElementById('next');
+const dotsEl=document.getElementById('dots');
+const captionEl=document.getElementById('caption');
+const thumbsEl=document.getElementById('thumbnails');
+
+
+let current=0;
+const total=slides.length;
+const autoplayDelay=3500;
+let autoplayTimer=null;
+
+
+slides.forEach((_,i)=>{
+const d=document.createElement('button');
+d.className='dot';
+d.addEventListener('click',()=>{goTo(i);resetAutoplay();});
+dotsEl.appendChild(d);
+});
+
+
+const dots=Array.from(dotsEl.children);
+
+
+slides.forEach((s,i)=>{
+const t=document.createElement('div');
+t.className='thumbnail';
+t.innerHTML=`<img src="${s.querySelector('img').src}" alt="thumb${i+1}">`;
+t.addEventListener('click',()=>{goTo(i);resetAutoplay();});
+thumbsEl.appendChild(t);
+});
+
+
+const thumbs=Array.from(thumbsEl.children);
+
+
+function update(){
+slidesEl.style.transform=`translateX(${-current*100}%)`;
+dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+thumbs.forEach((t,i)=>t.classList.toggle('active',i===current));
+captionEl.textContent=slides[current].getAttribute('data-caption')||'';
+}
+
+
+function prev(){current=(current-1+total)%total;update();}
+function next(){current=(current+1)%total;update();}
+function goTo(i){current=((i%total)+total)%total;update();}
+
+
+prevBtn.onclick=()=>{prev();resetAutoplay();};
+nextBtn.onclick=()=>{next();resetAutoplay();};
+
+
+function startAutoplay(){stopAutoplay();autoplayTimer=setInterval(next,autoplayDelay);}
+function stopAutoplay(){if(autoplayTimer)clearInterval(autoplayTimer);autoplayTimer=null;}
+function resetAutoplay(){stopAutoplay();startAutoplay();}
+
+
+slider.onmouseenter=()=>stopAutoplay();
+slider.onmouseleave=()=>startAutoplay();
+
+
+window.onkeydown=(e)=>{if(e.key==='ArrowLeft'){prev();resetAutoplay();}if(e.key==='ArrowRight'){next();resetAutoplay();}};
+
+
+update();startAutoplay();
+})();
+</script>
+    <section class="content-section" id="gioithieu">
+
 		<div class="about-container">
 			<div class="about-image">
                 <iframe src="https://www.youtube.com/embed/4NyrSiZkkdg?si=w4YceImxinWxxCeN&amp;controls=0&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
