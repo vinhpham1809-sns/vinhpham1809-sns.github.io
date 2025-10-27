@@ -49,10 +49,15 @@
     }
 
     .slides {
-      display: flex;
+      /*display: flex;
       transition: transform 0.8s ease-in-out;
       width: 100%;
+      height: 100%;*/
+	  position: absolute;
+      width: 100%;
       height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
     .slides img {
@@ -64,8 +69,10 @@
 	  display: block;
       border-radius: 10px;
     }
-
-    /*Nút điều hướng trái/phải */
+	.slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
     .nav {
       position: absolute;
       top: 50%;
@@ -74,11 +81,12 @@
       justify-content: space-between;
       transform: translateY(-50%);
       padding: 0 20px;
+      z-index: 3;
     }
 
     .nav button {
       background: rgba(0, 0, 0, 0.4);
-      color: #fff;
+      color: white;
       border: none;
       padding: 12px 16px;
       border-radius: 50%;
@@ -86,12 +94,9 @@
       cursor: pointer;
       transition: 0.3s;
     }
+    .nav button:hover { background: rgba(0, 0, 0, 0.7); }
 
-    .nav button:hover {
-      background: rgba(0, 0, 0, 0.7);
-    }
-
-    /* Dấu chấm hiển thị slide */
+    /* Chấm chỉ slide */
     .dots {
       position: absolute;
       bottom: 10px;
@@ -99,6 +104,7 @@
       display: flex;
       justify-content: center;
       gap: 10px;
+      z-index: 3;
     }
 
     .dot {
@@ -109,20 +115,39 @@
       cursor: pointer;
       transition: 0.3s;
     }
+    .dot.active { background: white; transform: scale(1.2); }
 
-    .dot.active {
-      background: white;
-      transform: scale(1.2);
+    /* Hiệu ứng chuyển động */
+    .fade { animation: fadeEffect 1.5s ease-in-out; }
+    .slide-left { animation: slideLeft 1s ease-in-out; }
+    .slide-right { animation: slideRight 1s ease-in-out; }
+    .zoom { animation: zoomIn 1.3s ease-in-out; }
+    .rotate { animation: rotateIn 1.2s ease-in-out; }
+
+    @keyframes fadeEffect {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideLeft {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    @keyframes slideRight {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(1.2); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes rotateIn {
+      from { transform: rotate(-15deg) scale(1.1); opacity: 0; }
+      to { transform: rotate(0deg) scale(1); opacity: 1; }
     }
 
     @media (max-width: 768px) {
-      .nav button {
-        padding: 8px 10px;
-        font-size: 18px;
-      }
-      .slider {
-        height: 40vw; /* cao hơn 1 chút cho màn nhỏ */
-      }
+      .slider { height: 40vw; }
+      .nav button { padding: 8px 10px; font-size: 18px; }
     }
   </style>
 </style>
@@ -697,66 +722,54 @@ document.documentElement.scrollTop = 0;
         </div>
     </div>
 
-	
-   <div class="slides">
-    <div class="slides">
-      <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
-      <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">	
-      <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">	
+	<div class="slider">
+    <img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+	<img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+	<img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+
+
+
+    <div class="nav">
+      <button id="prev">❮</button>
+      <button id="next">❯</button>
     </div>
-	   <div class="nav">
-       	<button id="prev">❮</button>
-      	<button id="next">❯</button>
-       </div>
-       <div class="dots" id="dots"></div>
-	</div>
-  
+
+    <div class="dots" id="dots"></div>
+  </div>
 
   <script>
-    const slides = document.querySelector('.slides');
-    const images = document.querySelectorAll('.slides img');
+    const slides = document.querySelectorAll('.slide');
     const dotsContainer = document.getElementById('dots');
-    const totalSlides = images.length;
     let index = 0;
+    const effects = ['fade', 'slide-left', 'slide-right', 'zoom', 'rotate'];
 
-    // Tạo chấm tròn
-    images.forEach((_, i) => {
+    // Tạo chấm
+    slides.forEach((_, i) => {
       const dot = document.createElement('div');
       dot.classList.add('dot');
       if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => moveToSlide(i));
+      dot.addEventListener('click', () => showSlide(i));
       dotsContainer.appendChild(dot);
     });
-
     const dots = document.querySelectorAll('.dot');
 
-    document.getElementById('next').addEventListener('click', nextSlide);
-    document.getElementById('prev').addEventListener('click', prevSlide);
+    function showSlide(i) {
+      slides[index].classList.remove('active');
+      dots[index].classList.remove('active');
+      slides[index].classList.remove(...effects);
 
-    function updateDots() {
-      dots.forEach(dot => dot.classList.remove('active'));
+      index = (i + slides.length) % slides.length;
+
+      const effect = effects[Math.floor(Math.random() * effects.length)];
+      slides[index].classList.add('active', effect);
       dots[index].classList.add('active');
     }
 
-    function moveToSlide(i) {
-      index = i;
-      slides.style.transform = `translateX(${-index * 100}%)`;
-      updateDots();
-    }
+    document.getElementById('next').addEventListener('click', () => showSlide(index + 1));
+    document.getElementById('prev').addEventListener('click', () => showSlide(index - 1));
 
-    function nextSlide() {
-      index = (index + 1) % totalSlides;
-      moveToSlide(index);
-    }
-
-    function prevSlide() {
-      index = (index - 1 + totalSlides) % totalSlides;
-      moveToSlide(index);
-    }
-
-    /* Tự động chạy*/
-    setInterval(nextSlide, 5000);
-	  </script>
+    setInterval(() => showSlide(index + 1), 5000);
+  </script>
 
     <header>
         <h3>QUẢNG CÁO SNS XIN CHÀO!</h3>
