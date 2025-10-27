@@ -866,73 +866,7 @@ document.documentElement.scrollTop = 0;
             <i class="fas fa-bars"></i>
         </button>
     </header>
-	<h1>🌿 Bộ Sưu Tập Ảnh Thiên Nhiên</h1>
-	<div class="gallery">
-    <img src="banghieu/congtrinh_1.jpg" alt="Cảnh núi rừng">
-    <img src="banghieu/congtrinh_2.jpg" alt="Dòng sông mùa hạ">
-    <img src="banghieu/congtrinh_3.jpg" alt="Cánh đồng hoa">
-    <img src="banghieu/congtrinh_4.jpg" alt="Biển xanh nắng vàng">
-    <img src="banghieu/congtrinh_5.jpg" alt="Hoàng hôn trên núi">
-    <img src="banghieu/congtrinh_6.jpg" alt="Rừng cây buổi sớm">
-  </div>
 
-  <!-- Lightbox hiển thị ảnh lớn -->
-  <div class="lightbox" id="lightbox">
-    <button class="close" id="closeBtn">✖</button>
-    <button class="prev" id="prevBtn">❮</button>
-    <img id="lightbox-img" src="" alt="">
-    <button class="next" id="nextBtn">❯</button>
-    <div class="caption" id="caption"></div>
-  </div>
-  <script>
-    const images = document.querySelectorAll('.gallery img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const caption = document.getElementById('caption');
-    const closeBtn = document.getElementById('closeBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let index = 0;
-
-    function showImage(i) {
-      index = i;
-      lightbox.style.display = 'flex';
-      lightboxImg.src = images[i].src.replace('/400/300', '/1200/800'); // ảnh lớn hơn
-      caption.textContent = images[i].alt;
-    }
-
-    images.forEach((img, i) => {
-      img.addEventListener('click', () => showImage(i));
-    });
-
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
-
-    function showNext() {
-      index = (index + 1) % images.length;
-      showImage(index);
-    }
-
-    function showPrev() {
-      index = (index - 1 + images.length) % images.length;
-      showImage(index);
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    nextBtn.addEventListener('click', showNext);
-    prevBtn.addEventListener('click', showPrev);
-
-    // Bấm ngoài ảnh hoặc phím ESC để thoát
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
-    });
-  </script>	
     <section class="content-section" id="gioithieu">
 	
 		<div class="about-container">
