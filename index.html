@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     
-/*Galery*/
-<style>
+
+<style>/* Galery */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Arial, sans-serif; background: #111; color: #fff; }
 
@@ -108,8 +108,8 @@
     }
   </style>	
 	
-/*Slide banner*/
-<style>
+
+<style>/*Slide banner*/
     * {
       box-sizing: border-box;
       margin: 0;
@@ -919,6 +919,55 @@ document.documentElement.scrollTop = 0;
     <button class="next" id="nextBtn">❯</button>
     <div class="caption" id="caption"></div>
   </div>
+  <script>
+    const images = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.getElementById('caption');
+    const closeBtn = document.getElementById('closeBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let index = 0;
+
+    function showImage(i) {
+      index = i;
+      lightbox.style.display = 'flex';
+      lightboxImg.src = images[i].src.replace('/400/300', '/1200/800'); // ảnh lớn hơn
+      caption.textContent = images[i].alt;
+    }
+
+    images.forEach((img, i) => {
+      img.addEventListener('click', () => showImage(i));
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    function showNext() {
+      index = (index + 1) % images.length;
+      showImage(index);
+    }
+
+    function showPrev() {
+      index = (index - 1 + images.length) % images.length;
+      showImage(index);
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
+
+    // Bấm ngoài ảnh hoặc phím ESC để thoát
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  </script>	
     <section class="content-section" id="sanpham">
         <h2>Sản Phẩm Của Chúng Tôi</h2>
         <p class="section-subtitle">Quảng Cáo SNS cung cấp đa dạng các giải pháp quảng cáo, từ thiết kế đến thi công, đáp ứng mọi nhu cầu của khách hàng.</p>
@@ -1241,55 +1290,7 @@ document.documentElement.scrollTop = 0;
             });
         });
     </script>
-	<script>
-    const images = document.querySelectorAll('.gallery img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const caption = document.getElementById('caption');
-    const closeBtn = document.getElementById('closeBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let index = 0;
-
-    function showImage(i) {
-      index = i;
-      lightbox.style.display = 'flex';
-      lightboxImg.src = images[i].src.replace('/400/300', '/1200/800'); // ảnh lớn hơn
-      caption.textContent = images[i].alt;
-    }
-
-    images.forEach((img, i) => {
-      img.addEventListener('click', () => showImage(i));
-    });
-
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
-
-    function showNext() {
-      index = (index + 1) % images.length;
-      showImage(index);
-    }
-
-    function showPrev() {
-      index = (index - 1 + images.length) % images.length;
-      showImage(index);
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    nextBtn.addEventListener('click', showNext);
-    prevBtn.addEventListener('click', showPrev);
-
-    // Bấm ngoài ảnh hoặc phím ESC để thoát
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'ArrowLeft') showPrev();
-    });
-  </script>
+	
 </body>
 </html>
 
