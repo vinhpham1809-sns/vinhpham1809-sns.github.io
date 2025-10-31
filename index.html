@@ -11,104 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    
-
-<style>/* Galery */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; background: #111; color: #fff; }
-
-    h1 {
-      text-align: center;
-      padding: 20px;
-      font-size: 28px;
-      letter-spacing: 1px;
-    }
-
-    /* Lưới ảnh nhỏ */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-      opacity: 0.8;
-    }
-
-    /* Lightbox hiển thị ảnh lớn */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      flex-direction: column;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-    }
-
-    .lightbox .caption {
-      margin-top: 15px;
-      font-size: 18px;
-      color: #eee;
-    }
-
-    .close, .prev, .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 40px;
-      color: white;
-      background: rgba(0, 0, 0, 0.4);
-      border: none;
-      border-radius: 50%;
-      padding: 10px 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .close:hover, .prev:hover, .next:hover { background: rgba(255,255,255,0.2); }
-
-    .close {
-      top: 30px;
-      right: 30px;
-      transform: none;
-    }
-
-    .prev { left: 40px; }
-    .next { right: 40px; }
-
-    @media (max-width: 768px) {
-      .gallery img { height: 140px; }
-      .close, .prev, .next { font-size: 28px; }
-    }
-  </style>	
-	
-
+  
 <style>/*Slide banner*/
     * {
       box-sizing: border-box;
@@ -133,12 +36,12 @@
 
 		position: relative;
             overflow: hidden;
-            background: var(--main-color);
+            background: #fff; /*var(--main-color);*/
             width: 85%;
-			margin: 0px auto;
+			/*margin: 0px auto;
             border-radius: 10px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            padding: 10px;
+            padding: 10px;*/
 	
     }
 
@@ -352,7 +255,7 @@
         section.hero {
             position: relative;
             overflow: hidden;
-            background: var(--main-color);
+            background: #fff /*var(--main-color);*/
             width: 90%;
 			/*margin: 0px auto;
             border-radius: 10px;
