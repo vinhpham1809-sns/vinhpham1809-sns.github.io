@@ -718,24 +718,7 @@ document.documentElement.scrollTop = 0;
 
     <div class="dots" id="dots"></div>
   </div>
-  <script>/*hiển thị ngày giờ*/
-const clockEl = document.getElementById('clock');
-const days = ['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
-
-
-function tick(){
-const now = new Date();
-const dayName = days[now.getDay()];
-const dd = String(now.getDate()).padStart(2,'0');
-const MM = String(now.getMonth()+1).padStart(2,'0');
-const yyyy = now.getFullYear();
-const hh = String(now.getHours()).padStart(2,'0');
-const mm = String(now.getMinutes()).padStart(2,'0');
-const ss = String(now.getSeconds()).padStart(2,'0');
-clockEl.textContent = `${dayName}: ${dd}/${MM}/${yyyy}  ${hh}:${mm}:${ss}`;
-}
-tick();
-setInterval(tick, 1000);
+  
 </script>	
   <script>/*Banner*/
     const slides = document.querySelector('.slides');
@@ -795,6 +778,24 @@ setInterval(tick, 1000);
         <button class="mobile-nav-toggle" aria-label="Menu">
             <i class="fas fa-bars"></i>
         </button>
+		<script>/*hiển thị ngày giờ*/
+const clockEl = document.getElementById('clock');
+const days = ['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
+
+
+function tick(){
+const now = new Date();
+const dayName = days[now.getDay()];
+const dd = String(now.getDate()).padStart(2,'0');
+const MM = String(now.getMonth()+1).padStart(2,'0');
+const yyyy = now.getFullYear();
+const hh = String(now.getHours()).padStart(2,'0');
+const mm = String(now.getMinutes()).padStart(2,'0');
+const ss = String(now.getSeconds()).padStart(2,'0');
+clockEl.textContent = `${dayName}: ${dd}/${MM}/${yyyy}  ${hh}:${mm}:${ss}`;
+}
+tick();
+setInterval(tick, 1000);
     </header>
 
     <section class="content-section" id="gioithieu">
