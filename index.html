@@ -12,7 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-<style>/*Slide banner*/
+	<style>/*Ngày giờ*/
+	body{display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0b1220;color:#e6eef8;font-family:Inter,system-ui,Arial}
+	.clock{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:24px 40px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.6);text-align:center;font-size:28px;font-weight:600;letter-spacing:0.5px}
+	@media(max-width:480px){.clock{font-size:20px;padding:16px 24px}}
+	</style>
+	
+	<style>/*Slide banner*/
     * {
       box-sizing: border-box;
       margin: 0;
@@ -689,7 +695,9 @@ document.documentElement.scrollTop = 0;
         <h3><div class="social-links">
             <a href="https://www.facebook.com/QuangCaoSNS" title="Fanpage SNS"><i class="fab fa-facebook-f"></i></a>
             <a href="mailto:quangcaosns@gmail.com" title="Email SNS"><i class="fas fa-envelope"></i></a>
-        </div></h3>
+			
+		</div></h3>
+		<div class="clock" id="clock">Đang tải...</div>
         <div class="hotline">
             <h3>Hotline: <strong>0907 547 785</strong></h3>
         </div>
@@ -710,7 +718,25 @@ document.documentElement.scrollTop = 0;
 
     <div class="dots" id="dots"></div>
   </div>
+  <script>/*hiển thị ngày giờ*/
+const clockEl = document.getElementById('clock');
+const days = ['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
 
+
+function tick(){
+const now = new Date();
+const dayName = days[now.getDay()];
+const dd = String(now.getDate()).padStart(2,'0');
+const MM = String(now.getMonth()+1).padStart(2,'0');
+const yyyy = now.getFullYear();
+const hh = String(now.getHours()).padStart(2,'0');
+const mm = String(now.getMinutes()).padStart(2,'0');
+const ss = String(now.getSeconds()).padStart(2,'0');
+clockEl.textContent = `${dayName}, ${dd}/${MM}/${yyyy} — ${hh}:${mm}:${ss}`;
+}
+tick();
+setInterval(tick, 1000);
+</script>	
   <script>
     const slides = document.querySelector('.slides');
     const images = document.querySelectorAll('.slides img');
