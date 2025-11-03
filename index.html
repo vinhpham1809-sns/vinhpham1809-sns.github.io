@@ -14,7 +14,7 @@
   
 	<style>/*Ngày giờ*/
 	
-	.clock{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));font-size:16px;font-weight:600;letter-spacing:0.5px}
+	.clock{font-size:16px;font-weight:600;letter-spacing:0.5px}
 	@media(max-width:480px){.clock{font-size:20px;padding:16px 24px}}
 	</style>
 	
@@ -732,12 +732,12 @@ const yyyy = now.getFullYear();
 const hh = String(now.getHours()).padStart(2,'0');
 const mm = String(now.getMinutes()).padStart(2,'0');
 const ss = String(now.getSeconds()).padStart(2,'0');
-clockEl.textContent = `${dayName}: ${dd}/${MM}/${yyyy}  ${hh}:${mm}:${ss}`;
+clockEl.textContent = `${dayName}: ${dd}/${MM}/${yyyy} -${hh}:${mm}:${ss}`-;
 }
 tick();
 setInterval(tick, 1000);
 </script>	
-  <script>
+  <script>/*Banner*/
     const slides = document.querySelector('.slides');
     const images = document.querySelectorAll('.slides img');
     const dotsContainer = document.getElementById('dots');
