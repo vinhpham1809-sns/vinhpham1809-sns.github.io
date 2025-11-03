@@ -720,7 +720,7 @@ document.documentElement.scrollTop = 0;
   </div>
   <script>/*hiển thị ngày giờ*/
 const clockEl = document.getElementById('clock');
-const days = ['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
+const days = ['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
 
 
 function tick(){
@@ -732,7 +732,7 @@ const yyyy = now.getFullYear();
 const hh = String(now.getHours()).padStart(2,'0');
 const mm = String(now.getMinutes()).padStart(2,'0');
 const ss = String(now.getSeconds()).padStart(2,'0');
-clockEl.textContent = `${dayName}, ${dd}/${MM}/${yyyy} — ${hh}:${mm}:${ss}`;
+clockEl.textContent = `${dayName}: ${dd}/${MM}/${yyyy}  ${hh}:${mm}:${ss}`;
 }
 tick();
 setInterval(tick, 1000);
