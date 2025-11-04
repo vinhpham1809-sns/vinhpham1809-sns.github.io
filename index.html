@@ -66,48 +66,7 @@
 	  display: block;
       border-radius: 10px;
     }
-	.slides.active {
-    opacity: 1;
-    z-index: 2;
- 	}	
-	/* --- Hiệu ứng Fade --- */
-    .effect-fade .slides {
-    transform: scale(1.05);
-    }
-    .effect-fade .slides.active {
-    transform: scale(1);
-    }
-
-    /* --- Hiệu ứng Slide --- */
-    .effect-slide .slides {
-    transform: translateX(100%);
-    }
-    .effect-slide .slides.active {
-    transform: translateX(0);
-    }
-    .effect-slide .slides.prev {
-    transform: translateX(-100%);
-    }
-
-    /* --- Hiệu ứng Zoom --- */
-    .effect-zoom .slides {
-    transform: scale(1.3);
-    }
-    .effect-zoom .slides.active {
-    transform: scale(1);
-    }
-
-    /* --- Hiệu ứng Flip --- */
-    .effect-flip {
-    perspective: 1000px;
-    }
-    .effect-flip .slides {
-    transform: rotateY(90deg);
-    backface-visibility: hidden;
-    }
-    .effect-flip .slides.active {
-    transform: rotateY(0deg);
-    }	
+	
  	/* Nút điều hướng trái/phải */
     .nav {
       position: absolute;
@@ -742,20 +701,23 @@ document.documentElement.scrollTop = 0;
         </div>
     </div>
 	
-	<div class="banner effect-fade" id="slider">
-    
-     	<div class="slides active"><img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết"></div>
-		<div class="slides"><img src="banghieu/bannersns2.png" alt="Công ty quảng cáo SNS - Phan Thiết"></div>
-		<div class="slides"><img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết"></div>
-		<div class="slides"><img src="banghieu/bannersns2.png" alt="Công ty quảng cáo SNS - Phan Thiết"></div>
-		<div class="slides"><img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết"></div>
-        <div class="nav">
-     		<button id="prev">❮</button>
-     		<button id="next">❯</button> 
-    	</div>
-	    <div class="dots" id="dots"></div>
-		<div class="effect-label" id="effectLabel">Hiệu ứng: Mờ dần</div>
+	<div class="slider">
+    <div class="slides">
+     	<img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+		<img src="banghieu/bannersns2.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+		<img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+		<img src="banghieu/bannersns2.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+		<img src="bannersns.png" alt="Công ty quảng cáo SNS - Phan Thiết">
+    </div>
+
+    <div class="nav">
+     <button id="prev">❮</button>
+     <button id="next">❯</button> 
+    </div>
+
+    <div class="dots" id="dots"></div>
   </div>
+
   <script>/*hiển thị ngày giờ*/
 	const clockEl = document.getElementById('clock');
 	const days = ['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
@@ -776,72 +738,51 @@ document.documentElement.scrollTop = 0;
 	setInterval(tick, 1000);  
   </script>	
 	
-  <script>
-const banner = document.getElementById('slider');
-const slides = document.querySelectorAll('.slides');
-const dotsContainer = document.querySelector('.dots');
-const nextBtn = document.querySelector('.next');
-const prevBtn = document.querySelector('.prev');
-const label = document.getElementById('effectLabel');
+  <script>/*Banner*/
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const dotsContainer = document.getElementById('dots');
+    const totalSlides = images.length;
+    let index = 0;
 
-let current = 0;
-let autoSlide;
-let effects = ['fade', 'slide', 'zoom', 'flip'];
+    // Tạo chấm tròn
+    images.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => moveToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
 
-// Tạo chấm điều hướng
-slides.forEach((_, i) => {
-  const dot = document.createElement('div');
-  dot.classList.add('dot');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => showSlide(i, true));
-  dotsContainer.appendChild(dot);
-});
-const dots = document.querySelectorAll('.dot');
+    const dots = document.querySelectorAll('.dot');
 
-// Hiển thị slide
-function showSlide(index, manual = false) {
-  slides[current].classList.remove('active', 'prev');
-  dots[current].classList.remove('active');
-  const prevIndex = current;
-  current = (index + slides.length) % slides.length;
+    document.getElementById('next').addEventListener('click', nextSlide);
+    document.getElementById('prev').addEventListener('click', prevSlide);
 
-  slides.forEach(slide => slide.classList.remove('prev'));
-  slides[prevIndex].classList.add('prev');
-  slides[current].classList.add('active');
-  dots[current].classList.add('active');
+    function updateDots() {
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
 
-  // Chọn hiệu ứng ngẫu nhiên (nếu không phải click tay)
-  if (!manual) {
-    const randomEffect = effects[Math.floor(Math.random() * effects.length)];
-    banner.className = `banner effect-${randomEffect}`;
-    label.textContent = 'Hiệu ứng: ' + effectName(randomEffect);
-  }
-}
+    function moveToSlide(i) {
+      index = i;
+      slides.style.transform = `translateX(${-index * 100}%)`;
+      updateDots();
+    }
 
-// Tên tiếng Việt
-function effectName(key) {
-  return {
-    fade: 'Mờ dần',
-    slide: 'Trượt ngang',
-    zoom: 'Phóng to',
-    flip: 'Lật 3D'
-  }[key] || key;
-}
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      moveToSlide(index);
+    }
 
-function nextSlide() { showSlide(current + 1); }
-function prevSlide() { showSlide(current - 1); }
+    function prevSlide() {
+      index = (index - 1 + totalSlides) % totalSlides;
+      moveToSlide(index);
+    }
 
-nextBtn.onclick = nextSlide;
-prevBtn.onclick = prevSlide;
-
-// Tự động chạy
-function startAuto() { autoSlide = setInterval(nextSlide, 5000); }
-function stopAuto() { clearInterval(autoSlide); }
-
-banner.addEventListener('mouseenter', stopAuto);
-banner.addEventListener('mouseleave', startAuto);
-startAuto();
-</script>
+    // Tự động chạy
+    setInterval(nextSlide, 5000);
+	</script>
 
     <header>
         <h3>QUẢNG CÁO SNS XIN CHÀO!</h3>
